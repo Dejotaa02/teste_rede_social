@@ -9,7 +9,6 @@ require_once __DIR__ . '/../inc/menu.php';
 
 $db = new Database();
 
-// Usando tabela 'posts' corretamente e campo 'criado_em'
 $sql = "
     SELECT p.*, u.nome,
         (SELECT COUNT(*) FROM likes l WHERE l.post_id = p.id) AS curtidas
@@ -19,7 +18,6 @@ $sql = "
 ";
 $result = $db->query($sql);
 $postagens = $result['status'] === 'success' ? $result['data'] : [];
-
 ?>
 
 <h2>Explorações Recentes</h2>
@@ -33,12 +31,31 @@ $postagens = $result['status'] === 'success' ? $result['data'] : [];
             em <?= date('d/m/Y H:i', strtotime($post['criado_em'])) ?><br>
             <p><?= nl2br(htmlspecialchars($post['conteudo'])) ?></p>
 
-            <form action="index.php?rota=curtir" method="post" style="display:inline;">
-                <input type="hidden" name="post_id" value="<?= $post['id'] ?>">
-                <button type="submit">Curtir</button>
-            </form>
-            (<?= $post['curtidas'] ?> curtidas)
+            <?php
+            //verifica se o usuário ja curtiu este post
+            $usuario = $_SESSION['usuario'] ?? null;
+            $ja_curtiu = false;
 
+            if ($usuario) {
+                $sql_like = "SELECT id FROM likes WHERE post_id = :post_id AND usuario_id = :usuario_id";
+                $res_like = $db->query($sql_like, [
+                    ':post_id' => $post['id'],
+                    ':usuario_id' => $usuario['id']
+                ]);
+
+                $ja_curtiu = $res_like['status'] === 'success' && count($res_like['data']) > 0;
+            }
+            ?>
+
+            <?php if ($usuario): ?>
+                <form action="index.php?rota=curtir" method="post" style="display:inline;">
+                    <input type="hidden" name="post_id" value="<?= $post['id'] ?>">
+                    <button type="submit"><?= $ja_curtiu ? 'Descurtir' : 'Curtir' ?></button>
+                </form>
+            <?php endif; ?>
+
+            (<?= $post['curtidas'] ?> curtidas)
+            <hr>
             <h4>Comentários:</h4>
             <?php
             $sql_com = "SELECT c.*, u.nome FROM comentarios c 
@@ -49,15 +66,48 @@ $postagens = $result['status'] === 'success' ? $result['data'] : [];
 
             if ($res_com['status'] === 'success') {
                 foreach ($res_com['data'] as $coment) {
-                    echo "<p><strong>" . htmlspecialchars($coment['nome']) . "</strong>: " . htmlspecialchars($coment['comentario']) . "</p>";
+                    echo "<div style='margin-bottom: 5px;'>";
+                    echo "<strong>" . htmlspecialchars($coment['nome']) . "</strong>: ";
+
+                    if (
+                        isset($_SESSION['usuario']) &&
+                        $_SESSION['usuario']['id'] == $coment['usuario_id'] &&
+                        isset($_GET['editar_comentario']) &&
+                        $_GET['editar_comentario'] == $coment['id']
+                    ) {
+                        // Formulário de edição
+                        echo "<form action='index.php?rota=editar_comentario' method='post' style='display:inline;'>
+                                <input type='hidden' name='comentario_id' value='{$coment['id']}'>
+                                <textarea name='novo_comentario' rows='2' cols='40'>" . htmlspecialchars($coment['comentario']) . "</textarea>
+                                <button type='submit'>Salvar</button>
+                                <a href='index.php?rota=home'>Cancelar</a>
+                            </form>";
+                    } else {
+                        // Comentário normal
+                        echo nl2br(htmlspecialchars($coment['comentario']));
+
+                        // Botões Editar/Excluir
+                        if (isset($_SESSION['usuario']) && $_SESSION['usuario']['id'] == $coment['usuario_id']) {
+                            echo " <a href='index.php?rota=home&editar_comentario={$coment['id']}'><button>Editar</button></a> ";
+
+                            echo "<form action='index.php?rota=excluir_comentario' method='post' style='display:inline;'>
+                                    <input type='hidden' name='comentario_id' value='{$coment['id']}'>
+                                    <button type='submit' onclick=\"return confirm('Excluir este comentário?')\">Excluir</button>
+                                </form>";
+                        }
+                    }
+
+                    echo "</div>";
                 }
+
+
             } else {
-                echo "<p style='color:red;'>Erro ao carregar comentários.</p>";
+                echo "<p style='color:red;'>Erro ao carregar comentári,os.</p>";
                 error_log("Erro ao buscar comentários do post ID {$post['id']}: " . $res_com['message']);
             }
             ?>
 
-            <?php if (isset($_SESSION['usuario'])) : ?>
+            <?php if ($usuario): ?>
                 <form action="index.php?rota=comentar" method="post">
                     <input type="hidden" name="post_id" value="<?= $post['id'] ?>">
                     <textarea name="comentario" rows="2" cols="40" required></textarea><br>

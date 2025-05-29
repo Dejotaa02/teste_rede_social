@@ -40,6 +40,12 @@ switch ($rota) {
     case 'home':
         require 'scripts/home.php';
         break;
+    case 'excluir_comentario':
+        require 'scripts/excluir_comentario.php';
+        break;
+    case 'editar_comentario':
+        require 'scripts/editar_comentario.php';
+        break;
     default:
         require 'scripts/submit_login.php';
         break;

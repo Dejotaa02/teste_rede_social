@@ -3,7 +3,7 @@ if (!isset($_SESSION)) session_start();
 
 ?>
 <nav>
-    <a href="index.php?rota=ver_posts">Explorar</a> |
+    
     <?php if (isset($_SESSION['usuario'])): ?>
         <a href="index.php?rota=home">Início</a> |
         <a href="index.php?rota=criar_post">Novo Post</a> |

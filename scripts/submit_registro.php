@@ -44,5 +44,10 @@ $sql = "INSERT INTO usuarios (nome, usuario, senha) VALUES (:nome, :usuario, :se
 $db->query($sql, $params);
 
 $_SESSION['success'] = 'Cadastro realizado com sucesso!';
-header('Location: index.php?rota=login');
+$_SESSION['usuario'] = [
+    'id' => $user['id'],
+    'nome' => $user['nome'],
+    'usuario' => $user['usuario']
+];
+header('Location: index.php?rota=home');
 exit;
