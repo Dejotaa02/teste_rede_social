@@ -4,7 +4,6 @@ if (session_status() === PHP_SESSION_NONE) {
     session_start();
 }
 
-
 if ($_SERVER['REQUEST_METHOD'] !== 'POST') {
     header('Location: index.php?rota=registro');
     exit;
@@ -24,6 +23,7 @@ if (empty($nome) || empty($usuario) || empty($senha) || strlen($senha) < 6) {
 
 $db = new Database();
 
+// Verificar se o usuário já existe
 $sql = "SELECT * FROM usuarios WHERE usuario = :usuario";
 $params = [':usuario' => $usuario];
 $result = $db->query($sql, $params);
@@ -34,6 +34,7 @@ if (count($result['data']) > 0) {
     exit;
 }
 
+// Inserir novo usuário
 $params = [
     ':nome' => $nome,
     ':usuario' => $usuario,
@@ -43,11 +44,24 @@ $params = [
 $sql = "INSERT INTO usuarios (nome, usuario, senha) VALUES (:nome, :usuario, :senha)";
 $db->query($sql, $params);
 
-$_SESSION['success'] = 'Cadastro realizado com sucesso!';
-$_SESSION['usuario'] = [
-    'id' => $user['id'],
-    'nome' => $user['nome'],
-    'usuario' => $user['usuario']
-];
-header('Location: index.php?rota=home');
-exit;
+// Buscar usuário recém-criado para iniciar a sessão
+$sql = "SELECT * FROM usuarios WHERE usuario = :usuario";
+$result = $db->query($sql, [':usuario' => $usuario]);
+
+if ($result['status'] === 'success' && count($result['data']) > 0) {
+    $user = $result['data'][0];
+
+    $_SESSION['usuario'] = [
+        'id' => $user['id'],
+        'nome' => $user['nome'],
+        'usuario' => $user['usuario']
+    ];
+
+    $_SESSION['success'] = 'Cadastro realizado com sucesso!';
+    header('Location: index.php?rota=home');
+    exit;
+} else {
+    $_SESSION['error'] = 'Erro ao criar conta. Tente novamente.';
+    header('Location: index.php?rota=registro');
+    exit;
+}

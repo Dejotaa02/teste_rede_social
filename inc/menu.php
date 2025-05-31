@@ -1,10 +1,9 @@
 <?php
 if (!isset($_SESSION)) session_start();
-
 ?>
 <nav>
-    
     <?php if (isset($_SESSION['usuario'])): ?>
+        <span>Olá, <strong><?= htmlspecialchars($_SESSION['usuario']['nome']) ?></strong></span> |
         <a href="index.php?rota=home">Início</a> |
         <a href="index.php?rota=criar_post">Novo Post</a> |
         <a href="index.php?rota=perfil">Meu Perfil</a> |

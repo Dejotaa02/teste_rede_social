@@ -6,6 +6,14 @@ if (session_status() === PHP_SESSION_NONE) {
 
 $rota = $_GET['rota'] ?? 'ver_posts';
 
+// Redirecionar usuário logado tentando acessar login ou registro
+if (isset($_SESSION['usuario']) && in_array($rota, [
+    'login', 'registro','submit_login', 'submit_registro'
+    ])) {
+    header('Location: index.php?rota=home');
+    exit;
+}
+
 switch ($rota) {
     case 'login':
         require 'scripts/login.php';
@@ -51,9 +59,6 @@ switch ($rota) {
         break;
     case 'excluir_post':
         require 'posts/excluir_post.php';
-        break;
-    case 'perfil':
-        require 'scripts/perfil_usuario.php';
         break;
     default:
         require 'scripts/submit_login.php';
