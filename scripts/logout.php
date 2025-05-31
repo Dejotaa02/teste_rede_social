@@ -5,5 +5,5 @@ if (session_status() === PHP_SESSION_NONE) {
 }
 
 session_destroy();
-header('Location: index.php?rota=login');
+header('Location: index.php?rota=ver_posts');
 exit;

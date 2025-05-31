@@ -9,13 +9,22 @@ require_once __DIR__ . '/../inc/db_database.php';
 $usuario = $_SESSION['usuario'] ?? null;
 
 if (!$usuario || !isset($usuario['id'])) {
-    echo "Erro: Dados do usuário não disponíveis.";
+    echo "<p style='color:red;'>Erro: Dados do usuário não disponíveis.</p>";
     exit;
+}
+
+// Mostrar mensagem de exclusão ou outra mensagem em sessão, se existir
+if (!empty($_SESSION['mensagem'])) {
+    echo "<p style='color:green;'>" . htmlspecialchars($_SESSION['mensagem']) . "</p>";
+    unset($_SESSION['mensagem']);
 }
 
 $db = new Database();
 
 // Atualizar perfil ou senha
+$mensagem = '';
+$erro = '';
+
 if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     $acao = $_POST['acao'] ?? '';
 
@@ -82,3 +91,8 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     <input type="password" name="confirmar" required><br><br>
     <button type="submit">Alterar Senha</button>
 </form>
+
+<hr>
+
+<h3>Meus Posts</h3>
+<?php require __DIR__ . '/../posts/meus_posts.php'; ?>

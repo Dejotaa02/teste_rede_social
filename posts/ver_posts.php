@@ -9,10 +9,11 @@ require_once __DIR__ . '/../inc/db_database.php';
 
 $db = new Database();
 
-// Adiciona subconsulta para contar curtidas
+// Adiciona subconsultas para contar curtidas e comentários
 $sql = "
     SELECT p.*, u.nome,
-        (SELECT COUNT(*) FROM likes l WHERE l.post_id = p.id) AS curtidas
+        (SELECT COUNT(*) FROM likes l WHERE l.post_id = p.id) AS curtidas,
+        (SELECT COUNT(*) FROM comentarios c WHERE c.post_id = p.id) AS comentarios
     FROM posts p
     JOIN usuarios u ON p.usuario_id = u.id
     ORDER BY p.criado_em DESC
@@ -29,8 +30,16 @@ if ($result['status'] !== 'success' || count($result['data']) === 0) {
         echo "<div style='border:1px solid #ccc; padding:10px; margin-bottom:10px;'>";
         echo "<h3>" . htmlspecialchars($post['titulo']) . "</h3>";
         echo "<p>" . nl2br(htmlspecialchars($post['conteudo'])) . "</p>";
-        echo "<small><strong>" . $post['curtidas'] . "</strong> curtidas</small><br>";
-        echo "<small>Por " . htmlspecialchars($post['nome']) . " em " . date("d/m/Y H:i", strtotime($post['criado_em'])) . "</small><br>";
+
+        echo "<small>";
+        echo "<strong>" . $post['curtidas'] . "</strong> curtidas | ";
+        echo "<strong>" . $post['comentarios'] . "</strong> comentários<br>";
+        echo "Por " . htmlspecialchars($post['nome']) . " em " . date("d/m/Y H:i", strtotime($post['criado_em']));
+        if (!empty($post['editado_em'])) {
+            echo " | Editado em " . date("d/m/Y H:i", strtotime($post['editado_em']));
+        }
+        echo "</small><br>";
+
         echo "</div>";
     }
 }

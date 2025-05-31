@@ -4,7 +4,7 @@ if (session_status() === PHP_SESSION_NONE) {
     session_start();
 }
 
-$rota = $_GET['rota'] ?? 'login';
+$rota = $_GET['rota'] ?? 'ver_posts';
 
 switch ($rota) {
     case 'login':
@@ -45,6 +45,15 @@ switch ($rota) {
         break;
     case 'editar_comentario':
         require 'scripts/editar_comentario.php';
+        break;
+    case 'editar_post':
+        require 'posts/editar_post.php';
+        break;
+    case 'excluir_post':
+        require 'posts/excluir_post.php';
+        break;
+    case 'perfil':
+        require 'scripts/perfil_usuario.php';
         break;
     default:
         require 'scripts/submit_login.php';
