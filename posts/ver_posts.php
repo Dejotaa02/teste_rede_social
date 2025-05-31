@@ -29,6 +29,12 @@ if ($result['status'] !== 'success' || count($result['data']) === 0) {
     foreach ($result['data'] as $post) {
         echo "<div style='border:1px solid #ccc; padding:10px; margin-bottom:10px;'>";
         echo "<h3>" . htmlspecialchars($post['titulo']) . "</h3>";
+
+        // Aqui adicionamos a exibição da imagem, se existir
+        if (!empty($post['imagem'])) {
+            echo '<img src="' . htmlspecialchars($post['imagem']) . '" alt="Imagem do post" style="max-width:100%; height:auto; margin:10px 0;">';
+        }
+
         echo "<p>" . nl2br(htmlspecialchars($post['conteudo'])) . "</p>";
 
         echo "<small>";

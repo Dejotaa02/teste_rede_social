@@ -22,6 +22,13 @@ $postagens = $result['status'] === 'success' ? $result['data'] : [];
 
 <h2>Explorações Recentes</h2>
 
+<?php if (!empty($_SESSION['mensagem'])): ?>
+    <div id="msg-sucesso" style="color:green;">
+        <?= htmlspecialchars($_SESSION['mensagem']) ?>
+    </div>
+    <?php unset($_SESSION['mensagem']); ?>
+<?php endif; ?>
+
 <?php if (empty($postagens)): ?>
     <p>Nenhuma postagem disponível.</p>
 <?php else: ?>
@@ -29,10 +36,14 @@ $postagens = $result['status'] === 'success' ? $result['data'] : [];
         <div style="border:1px solid #ccc; padding:10px; margin-bottom:10px;">
             <strong><?= htmlspecialchars($post['nome']) ?></strong>
             em <?= date('d/m/Y H:i', strtotime($post['criado_em'])) ?><br>
+
+            <?php if (!empty($post['imagem'])): ?>
+                <img src="<?= htmlspecialchars($post['imagem']) ?>" alt="Imagem do post" style="max-width:100%; height:auto; margin:10px 0;">
+            <?php endif; ?>
+
             <p><?= nl2br(htmlspecialchars($post['conteudo'])) ?></p>
 
             <?php
-            //verifica se o usuário ja curtiu este post
             $usuario = $_SESSION['usuario'] ?? null;
             $ja_curtiu = false;
 
@@ -75,7 +86,6 @@ $postagens = $result['status'] === 'success' ? $result['data'] : [];
                         isset($_GET['editar_comentario']) &&
                         $_GET['editar_comentario'] == $coment['id']
                     ) {
-                        // Formulário de edição
                         echo "<form action='index.php?rota=editar_comentario' method='post' style='display:inline;'>
                                 <input type='hidden' name='comentario_id' value='{$coment['id']}'>
                                 <textarea name='novo_comentario' rows='2' cols='40'>" . htmlspecialchars($coment['comentario']) . "</textarea>
@@ -83,10 +93,8 @@ $postagens = $result['status'] === 'success' ? $result['data'] : [];
                                 <a href='index.php?rota=home'>Cancelar</a>
                             </form>";
                     } else {
-                        // Comentário normal
                         echo nl2br(htmlspecialchars($coment['comentario']));
 
-                        // Botões Editar/Excluir
                         if (isset($_SESSION['usuario']) && $_SESSION['usuario']['id'] == $coment['usuario_id']) {
                             echo " <a href='index.php?rota=home&editar_comentario={$coment['id']}'><button>Editar</button></a> ";
 
@@ -99,10 +107,8 @@ $postagens = $result['status'] === 'success' ? $result['data'] : [];
 
                     echo "</div>";
                 }
-
-
             } else {
-                echo "<p style='color:red;'>Erro ao carregar comentári,os.</p>";
+                echo "<p style='color:red;'>Erro ao carregar comentários.</p>";
                 error_log("Erro ao buscar comentários do post ID {$post['id']}: " . $res_com['message']);
             }
             ?>
@@ -117,3 +123,16 @@ $postagens = $result['status'] === 'success' ? $result['data'] : [];
         </div>
     <?php endforeach; ?>
 <?php endif; ?>
+
+<script>
+window.onload = function() {
+    const msgSucesso = document.getElementById('msg-sucesso');
+    if (msgSucesso) {
+        setTimeout(() => {
+            msgSucesso.style.transition = 'opacity 0.5s ease';
+            msgSucesso.style.opacity = '0';
+            setTimeout(() => msgSucesso.remove(), 500);
+        }, 5000);
+    }
+};
+</script>

@@ -21,7 +21,7 @@ if (!empty($_SESSION['mensagem'])) {
 
 $db = new Database();
 
-// Atualizar perfil ou senha
+// Inicializa variáveis de mensagem
 $mensagem = '';
 $erro = '';
 
@@ -31,13 +31,26 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     if ($acao === 'atualizar') {
         $novo_nome = trim($_POST['nome'] ?? '');
         $novo_email = trim($_POST['usuario'] ?? '');
+
         if ($novo_nome && $novo_email) {
-            $sql = "UPDATE usuarios SET nome = :nome, usuario = :usuario WHERE id = :id";
-            $params = [':nome' => $novo_nome, ':usuario' => $novo_email, ':id' => $usuario['id']];
-            $db->query($sql, $params);
-            $_SESSION['usuario']['nome'] = $novo_nome;
-            $_SESSION['usuario']['usuario'] = $novo_email;
-            $mensagem = "Perfil atualizado.";
+            // Verificar se o email já está em uso por outro usuário
+            $check = $db->query("SELECT id FROM usuarios WHERE usuario = :usuario AND id != :id", [
+                ':usuario' => $novo_email,
+                ':id' => $usuario['id']
+            ]);
+
+            if (!empty($check['data'])) {
+                $erro = "Este email já está em uso por outro usuário.";
+            } else {
+                $sql = "UPDATE usuarios SET nome = :nome, usuario = :usuario WHERE id = :id";
+                $params = [':nome' => $novo_nome, ':usuario' => $novo_email, ':id' => $usuario['id']];
+                $db->query($sql, $params);
+                $_SESSION['usuario']['nome'] = $novo_nome;
+                $_SESSION['usuario']['usuario'] = $novo_email;
+                $mensagem = "Perfil atualizado.";
+            }
+        } else {
+            $erro = "Nome e email não podem estar vazios.";
         }
     }
 

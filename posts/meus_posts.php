@@ -29,6 +29,12 @@ if (empty($postagens)) {
     foreach ($postagens as $post) {
         echo "<div style='border:1px solid #ccc; padding:10px; margin-bottom:10px;'>";
         echo "<h3>" . htmlspecialchars($post['titulo']) . "</h3>";
+
+        // Exibe a imagem do post, se existir
+        if (!empty($post['imagem'])) {
+            echo '<img src="' . htmlspecialchars($post['imagem']) . '" alt="Imagem do post" style="max-width:100%; height:auto; margin:10px 0;">';
+        }
+
         echo "<p>" . nl2br(htmlspecialchars($post['conteudo'])) . "</p>";
         echo "<small>Postado em " . date("d/m/Y H:i", strtotime($post['criado_em'])) . " | ";
         if (!empty($post['editado_em'])) {

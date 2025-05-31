@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Tempo de geração: 30/05/2025 às 20:57
+-- Tempo de geração: 31/05/2025 às 20:38
 -- Versão do servidor: 10.4.32-MariaDB
 -- Versão do PHP: 8.2.12
 
@@ -40,11 +40,8 @@ CREATE TABLE `comentarios` (
 --
 
 INSERT INTO `comentarios` (`id`, `post_id`, `usuario_id`, `comentario`, `criado_em`) VALUES
-(1, 2, 1, 'hahahhaahah', '2025-05-29 18:03:29'),
 (2, 1, 1, 'slk cachueira', '2025-05-29 18:32:22'),
-(3, 2, 2, 'isso eh um teste', '2025-05-29 19:46:45'),
 (4, 1, 2, 'slk teste um', '2025-05-29 19:46:59'),
-(5, 2, 3, 'nao vou curtir esse coment', '2025-05-29 19:47:55'),
 (6, 1, 3, 'slk tiu, teste 2', '2025-05-29 19:48:04');
 
 -- --------------------------------------------------------
@@ -66,10 +63,14 @@ CREATE TABLE `likes` (
 
 INSERT INTO `likes` (`id`, `post_id`, `usuario_id`, `criado_em`) VALUES
 (5, 1, 1, '2025-05-29 18:32:08'),
-(7, 2, 1, '2025-05-29 19:14:03'),
 (8, 1, 2, '2025-05-29 19:47:01'),
-(9, 2, 2, '2025-05-29 19:47:02'),
-(10, 1, 3, '2025-05-29 19:48:08');
+(10, 1, 3, '2025-05-29 19:48:08'),
+(14, 3, 1, '2025-05-31 10:40:08'),
+(15, 3, 2, '2025-05-31 11:42:06'),
+(16, 5, 2, '2025-05-31 11:43:39'),
+(17, 3, 3, '2025-05-31 11:53:17'),
+(20, 7, 2, '2025-05-31 14:49:51'),
+(23, 13, 2, '2025-05-31 15:35:17');
 
 -- --------------------------------------------------------
 
@@ -82,16 +83,23 @@ CREATE TABLE `posts` (
   `usuario_id` int(11) NOT NULL,
   `titulo` varchar(255) NOT NULL,
   `conteudo` text NOT NULL,
-  `criado_em` datetime DEFAULT current_timestamp()
+  `imagem` varchar(255) DEFAULT NULL,
+  `criado_em` datetime DEFAULT current_timestamp(),
+  `editado_em` datetime DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 --
 -- Despejando dados para a tabela `posts`
 --
 
-INSERT INTO `posts` (`id`, `usuario_id`, `titulo`, `conteudo`, `criado_em`) VALUES
-(1, 1, 'jaja', 'jeje\r\njiji\r\njojo\r\njuju', '2025-05-29 14:51:40'),
-(2, 1, 'ajuble', 'xacatumbalacatumbalumbata', '2025-05-29 15:58:42');
+INSERT INTO `posts` (`id`, `usuario_id`, `titulo`, `conteudo`, `imagem`, `criado_em`, `editado_em`) VALUES
+(1, 1, 'jaja', 'jeje\r\njiji\r\njojo\r\njuju', NULL, '2025-05-29 14:51:40', NULL),
+(3, 3, 'obviamente', 'conferindo\r\nse edita\r\ncom\r\nquebra\r\nde\r\nlinha', NULL, '2025-05-30 16:06:41', '2025-05-31 11:53:47'),
+(5, 2, 'teste do teste1', 'testando o teste 1', NULL, '2025-05-31 11:43:01', NULL),
+(7, 2, 'exclusao', 'ja funciona normal', NULL, '2025-05-31 14:49:47', NULL),
+(9, 2, 'tentativa', 'redirecionar para home apos criar o post', NULL, '2025-05-31 14:58:09', NULL),
+(13, 2, 'teste', 'da imagem', 'uploads/posts/post_683b4bbeab95f.png', '2025-05-31 15:34:38', NULL),
+(14, 2, 'teste', 'para alterar imagens e apagar a antiga', 'uploads/img_683b4c01d84f0.png', '2025-05-31 15:35:12', '2025-05-31 15:35:45');
 
 -- --------------------------------------------------------
 
@@ -124,8 +132,8 @@ INSERT INTO `usuarios` (`id`, `nome`, `usuario`, `senha`) VALUES
 --
 ALTER TABLE `comentarios`
   ADD PRIMARY KEY (`id`),
-  ADD KEY `post_id` (`post_id`),
-  ADD KEY `usuario_id` (`usuario_id`);
+  ADD KEY `usuario_id` (`usuario_id`),
+  ADD KEY `comentarios_ibfk_1` (`post_id`);
 
 --
 -- Índices de tabela `likes`
@@ -157,19 +165,19 @@ ALTER TABLE `usuarios`
 -- AUTO_INCREMENT de tabela `comentarios`
 --
 ALTER TABLE `comentarios`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=7;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=12;
 
 --
 -- AUTO_INCREMENT de tabela `likes`
 --
 ALTER TABLE `likes`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=11;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=24;
 
 --
 -- AUTO_INCREMENT de tabela `posts`
 --
 ALTER TABLE `posts`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=15;
 
 --
 -- AUTO_INCREMENT de tabela `usuarios`
@@ -185,14 +193,14 @@ ALTER TABLE `usuarios`
 -- Restrições para tabelas `comentarios`
 --
 ALTER TABLE `comentarios`
-  ADD CONSTRAINT `comentarios_ibfk_1` FOREIGN KEY (`post_id`) REFERENCES `posts` (`id`),
+  ADD CONSTRAINT `comentarios_ibfk_1` FOREIGN KEY (`post_id`) REFERENCES `posts` (`id`) ON DELETE CASCADE,
   ADD CONSTRAINT `comentarios_ibfk_2` FOREIGN KEY (`usuario_id`) REFERENCES `usuarios` (`id`);
 
 --
 -- Restrições para tabelas `likes`
 --
 ALTER TABLE `likes`
-  ADD CONSTRAINT `likes_ibfk_1` FOREIGN KEY (`post_id`) REFERENCES `posts` (`id`),
+  ADD CONSTRAINT `likes_ibfk_1` FOREIGN KEY (`post_id`) REFERENCES `posts` (`id`) ON DELETE CASCADE,
   ADD CONSTRAINT `likes_ibfk_2` FOREIGN KEY (`usuario_id`) REFERENCES `usuarios` (`id`);
 
 --
