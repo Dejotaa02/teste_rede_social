@@ -1,0 +1,33 @@
+* {
+  margin: 0px;
+  padding: 0;
+  box-sizing: border-box;
+font-family: "Roboto", sans-serif;
+}
+header {
+
+  background-color: #558b2f; /* Verde musgo escuro */
+  color: white;
+  padding: 1rem;
+  text-align: center;
+  display: flex;
+  justify-content: flex-end;
+  align-items: center;
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+}
+
+.menu-list a {
+  display: inline-block;
+  text-decoration: none;
+  color: white;
+  list-style: none;
+  padding: 10px 20px;
+  text-align: center;
+  border-radius: 5px;
+  justify-content: center;
+  align-items: right;
+}
+
+.menu-list :hover {
+  background-color: gray;
+}
