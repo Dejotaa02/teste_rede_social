@@ -20,14 +20,14 @@ $sql = "SELECT * FROM usuarios WHERE usuario = :usuario";
 $result = $db->query($sql, [':usuario' => $usuario]);
 
 if (empty($result['data'])) {
-    $_SESSION['error'] = "Usuário não encontrado!";
+    $_SESSION['error'] = "Usuário ou senha incorreta!";
     header('Location: index.php?rota=login');
     exit;
 }
 
 $user = $result['data'][0];
 if (!password_verify($senha, $user['senha'])) {
-    $_SESSION['error'] = "Senha incorreta!";
+    $_SESSION['error'] = "Usuário ou senha incorreta!!";
     header('Location: index.php?rota=login');
     exit;
 }
