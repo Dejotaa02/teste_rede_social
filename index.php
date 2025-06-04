@@ -6,11 +6,18 @@ if (session_status() === PHP_SESSION_NONE) {
 
 $rota = $_GET['rota'] ?? 'ver_posts';
 
+// Rotas públicas que não exigem login
+$rotasPublicas = ['login', 'registro', 'submit_login', 'submit_registro', 'ver_posts', 'logout'];
+
 // Redirecionar usuário logado tentando acessar login ou registro
-if (isset($_SESSION['usuario']) && in_array($rota, [
-    'login', 'registro','submit_login', 'submit_registro'
-    ])) {
+if (isset($_SESSION['usuario']) && in_array($rota, $rotasPublicas)) {
     header('Location: index.php?rota=home');
+    exit;
+}
+
+// Redirecionar usuário não logado tentando acessar rota protegida
+if (!isset($_SESSION['usuario']) && !in_array($rota, $rotasPublicas)) {
+    header('Location: index.php?rota=login');
     exit;
 }
 
