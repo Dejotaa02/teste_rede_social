@@ -118,3 +118,15 @@ body {
 .voltar-link a:hover {
     text-decoration: underline;
 }
+.checkbox-field{
+    display: flex;
+    align-items: center;
+    gap: 8px;
+}
+.check-especialista{
+    transform: scale(2);
+}
+
+#lattes{
+    display: none;
+}

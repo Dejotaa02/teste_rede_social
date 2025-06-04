@@ -88,37 +88,62 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
 }
 ?>
 
-<h2>Novo Post</h2>
+<!DOCTYPE html>
+<html lang="pt-br">
 
-<?php if (!empty($_SESSION['erro'])): ?>
-    <div id="msg-erro" style="color:red;">
-        <?= htmlspecialchars($_SESSION['erro']) ?>
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="css/home.css">
+    <link rel="shortcut icon" href="../assets/icone.png" type="image/x-icon">
+    <title>Base de dados</title>
+</head>
+
+<body class="post-body">
+
+    <?php if (!empty($_SESSION['erro'])): ?>
+        <div id="msg-erro" style="color:red;">
+            <?= htmlspecialchars($_SESSION['erro']) ?>
+        </div>
+        <?php unset($_SESSION['erro']); ?>
+    <?php endif; ?>
+
+    <h2 class="align-text">Crie sua postagem</h2>
+    <div class="criar-post">
+        <form method="post" enctype="multipart/form-data">
+            <input type="text" name="titulo" placeholder="Título do Post" required class="input-post">
+
+            <textarea name="conteudo" placeholder="Escreva seu post" required class="input-post"></textarea>
+
+            <div class="file-upload-wrapper">
+                <label for="foto" class="custom-file-upload">Anexe uma imagem</label>
+                <input type="file" name="imagem" id="imagem" class="input-photo" accept="image/*" capture="environment">
+                <p id="file-name"></p>
+            </div>
+
+            <h2 class="align-text">Marque no mapa a região em que encontrou essa espécime</h2></br>
+            <div id="map-container" style="height: 400px; width: 100%;">
+                <div id="map" style="height: 400px; width: 100%;"></div>
+            </div></br>
+            <button type="submit">Publicar</button>
+        </form>
     </div>
-    <?php unset($_SESSION['erro']); ?>
-<?php endif; ?>
+    
+    <script>
+        window.onload = function() {
+            const msgErro = document.getElementById('msg-erro');
+            if (msgErro) {
+                setTimeout(() => {
+                    msgErro.style.transition = 'opacity 0.5s ease';
+                    msgErro.style.opacity = '0';
+                    setTimeout(() => msgErro.remove(), 500);
+                }, 5000);
+            }
+        }
+    </script>
 
-<form method="post" enctype="multipart/form-data">
-    Título:<br>
-    <input type="text" name="titulo" required><br><br>
-
-    Conteúdo:<br>
-    <textarea name="conteudo" rows="5" cols="40" required></textarea><br><br>
-
-    Imagem (opcional):<br>
-    <input type="file" name="imagem" accept=".jpg,.jpeg,.png,.gif"><br><br>
-
-    <button type="submit">Publicar</button>
-</form>
-
-<script>
-window.onload = function() {
-    const msgErro = document.getElementById('msg-erro');
-    if (msgErro) {
-        setTimeout(() => {
-            msgErro.style.transition = 'opacity 0.5s ease';
-            msgErro.style.opacity = '0';
-            setTimeout(() => msgErro.remove(), 500);
-        }, 5000);
-    }
-}
-</script>
+    <script src="scripts/js_scripts/post.js"></script>
+    <!-- colocar chave da api -->
+    <script async src="https://maps.googleapis.com/maps/api/js?key=98&callback=initMap"></script>
+</body>
+</html>

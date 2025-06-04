@@ -1,5 +1,5 @@
 //EXIBE O NOME DO ARQUIVO SELECIONADO
-const input = document.getElementById("foto");
+const input = document.getElementById("imagem");
 const fileName = document.getElementById("file-name");
 console.log("teste teste teste")
 console.log("teste teste teste")
@@ -47,7 +47,7 @@ async function initMap(){
       if (marker == null) {
         console.log(marker)
         marker = new google.maps.Marker({
-        icon: '../assets/marcador_mapa_redimensionado.png',
+        icon: 'assets/marcador_mapa_redimensionado.png',
         map: map,
         position: position
       });

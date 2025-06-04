@@ -3,13 +3,14 @@
   padding: 0;
   box-sizing: border-box;
   font-family: "Roboto", sans-serif;
+  word-break: break-all;
 }
 
 .post {
   width: 60%;
   margin: 0 auto;
   background-color: white;
-  border: 1px solid black;
+  /* border: 1px solid black; */
   border-radius: 8px;
   padding: 15px;
   margin-bottom: 20px;
@@ -55,10 +56,11 @@
 }
 
 .posts_recentes {
+  background: linear-gradient(135deg, #a8e6cf, #dcedc1, #aed581);
   width: 50%;
   margin: 0 auto;
-  background-color: white;
-  border: 1px solid black;
+  /*background-color: white;
+  border: 1px solid black; altere se achar melhor ou para ter uma visão de como as divs estao organizadas*/
   border-radius: 8px;
   padding: 15px;
   margin-bottom: 20px;
@@ -69,7 +71,10 @@
   justify-content: center;
   margin-top: 20px;
 }
+
 .align-text {
+  display: flex;
+  justify-content: center;
   text-align: center;
 }
 
@@ -79,24 +84,19 @@
   background-size: 400% 400%;
   animation: backgroundShift 15s ease infinite;
 }
+
 @keyframes backgroundShift {
   0% {
     background-position: 0% 50%;
   }
+
   50% {
     background-position: 100% 50%;
   }
+
   100% {
     background-position: 0% 50%;
   }
-}
-
-.user-icon {
-  font-size: 2rem;
-}
-
-.input-photo {
-  display: none; /* esconde o input nativo */
 }
 
 .custom-file-upload {
@@ -122,6 +122,133 @@
   display: inline;
 }
 
-#publishBtn{
-  margin-top: 1rem;
+#map-container {
+  height: 30%;
+  width: 30%;
+}
+
+.btn-excluir {
+  background-color: #4caf50;
+  color: white;
+  border: none;
+  padding: 10px 20px;
+  font-size: 16px;
+  cursor: pointer;
+  border-radius: 5px;
+  transition: background-color 0.3s ease;
+
+  &:hover {
+    background-color: gray;
+  }
+}
+
+.btn-editar {
+  background-color: #4caf50;
+  color: white;
+  border: none;
+  padding: 10px 20px;
+  font-size: 16px;
+  cursor: pointer;
+  border-radius: 5px;
+  transition: background-color 0.3s ease;
+
+  &:hover {
+    background-color: gray;
+  }
+}
+
+.criar-post {
+  width: 50%;
+  margin: 0 auto;
+  background-color: white;
+  border-radius: 8px;
+  padding: 15px;
+  margin-bottom: 20px;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+
+  button {
+    background-color: #4caf50;
+    color: white;
+    border: none;
+    padding: 10px 20px;
+    font-size: 16px;
+    cursor: pointer;
+    border-radius: 5px;
+    transition: background-color 0.3s ease;
+
+    &:hover {
+      background-color: gray;
+    }
+  }
+
+  form {
+    input {
+      font-size: 14px;
+      width: 70%;
+      height: 40px;
+      border-radius: 5px;
+      border: 1px solid #ccc;
+      padding: 10px;
+      margin-bottom: 10px;
+    }
+
+    textarea {
+      font-size: 14px;
+      width: 90%;
+      height: 120px;
+      resize: none;
+      border-radius: 5px;
+      border: 1px solid #ccc;
+      padding: 10px;
+      margin-bottom: 10px;
+    }
+  }
+}
+
+.editar-post {
+  width: 50%;
+  margin: 0 auto;
+  background-color: white;
+  border-radius: 8px;
+  padding: 15px;
+  margin-bottom: 20px;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+
+  button {
+    background-color: #4caf50;
+    color: white;
+    border: none;
+    padding: 10px 20px;
+    font-size: 16px;
+    cursor: pointer;
+    border-radius: 5px;
+    transition: background-color 0.3s ease;
+
+    &:hover {
+      background-color: gray;
+    }
+  }
+
+  form {
+    input {
+      font-size: 14px;
+      width: 70%;
+      height: 40px;
+      border-radius: 5px;
+      border: 1px solid #ccc;
+      padding: 10px;
+      margin-bottom: 10px;
+    }
+
+    textarea {
+      font-size: 14px;
+      width: 90%;
+      height: 120px;
+      resize: none;
+      border-radius: 5px;
+      border: 1px solid #ccc;
+      padding: 10px;
+      margin-bottom: 10px;
+    }
+  }
 }
