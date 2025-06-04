@@ -1,9 +1,29 @@
 <?php
 if (!isset($_SESSION)) session_start();
 ?>
-<nav>
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Home</title>
+    <link rel="stylesheet" href="css/home.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:ital,opsz,wght@0,14..32,100..900;1,14..32,100..900&family=Roboto:ital,wght@0,100..900;1,100..900&display=swap" rel="stylesheet">
+    <link href='https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css' rel='stylesheet'>
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200&icon_names=mail" />
+    <link rel="shortcut icon" href="assets/icone.png" type="image/x-icon">
+</head>
+<body>
+    
+</body>
+</html>
+<header class="site-header">
+    <nav class="main-menu">
     <?php if (isset($_SESSION['usuario'])): ?>
-        <span>Olá, <strong><?= htmlspecialchars($_SESSION['usuario']['nome']) ?></strong></span> |
+        <ul class="menu-list">
+            <span>Olá, <strong><?= htmlspecialchars($_SESSION['usuario']['nome']) ?> </span> |
         <a href="index.php?rota=home">Início</a> |
         <a href="index.php?rota=criar_post">Novo Post</a> |
         <a href="index.php?rota=perfil">Meu Perfil</a> |
@@ -12,5 +32,8 @@ if (!isset($_SESSION)) session_start();
         <a href="index.php?rota=login">Login</a> |
         <a href="index.php?rota=registro">Registrar</a>
     <?php endif; ?>
+        </ul>
 </nav>
-<hr>
+</header>
+
+

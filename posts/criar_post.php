@@ -144,6 +144,6 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
 
     <script src="scripts/js_scripts/post.js"></script>
     <!-- colocar chave da api -->
-    <script async src="https://maps.googleapis.com/maps/api/js?key=98&callback=initMap"></script>
+    <script async src="https://maps.googleapis.com/maps/api/js?key=&callback=initMap"></script>
 </body>
 </html>

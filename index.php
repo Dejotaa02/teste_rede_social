@@ -7,7 +7,7 @@ if (session_status() === PHP_SESSION_NONE) {
 $rota = $_GET['rota'] ?? 'ver_posts';
 
 // Rotas públicas que não exigem login
-$rotasPublicas = ['login', 'registro', 'submit_login', 'submit_registro', 'ver_posts', 'logout'];
+$rotasPublicas = ['login', 'registro', 'submit_login', 'submit_registro', 'ver_posts', 'logout', 'redefinir_senha'];
 
 // Redirecionar usuário logado tentando acessar login ou registro
 if (isset($_SESSION['usuario']) && in_array($rota, $rotasPublicas)) {
@@ -66,6 +66,9 @@ switch ($rota) {
         break;
     case 'excluir_post':
         require 'posts/excluir_post.php';
+        break;
+    case 'redefinir_senha':
+        require 'scripts/redefinir_senha.php';
         break;
     default:
         require 'scripts/submit_login.php';
