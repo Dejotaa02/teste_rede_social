@@ -78,6 +78,17 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
 }
 ?>
 
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Meu Perfil</title>
+</head>
+<body>
+    
+
 <h2>Perfil</h2>
 
 <?php if (!empty($mensagem)) echo "<p style='color:green;'>$mensagem</p>"; ?>
@@ -109,3 +120,6 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
 
 <h3>Meus Posts</h3>
 <?php require __DIR__ . '/../posts/meus_posts.php'; ?>
+
+</body>
+</html>
