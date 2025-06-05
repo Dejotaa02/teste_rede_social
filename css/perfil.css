@@ -1,0 +1,105 @@
+* {
+    margin: 0px;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: "Roboto", sans-serif;
+    word-break: break-all;
+}
+
+.align-text {
+    display: flex;
+    justify-content: center;
+    text-align: center;
+}
+
+body {
+    background: linear-gradient(135deg, #a8e6cf, #dcedc1, #aed581);
+}
+
+.perfil-usuario {
+    background: linear-gradient(135deg, #a8e6cf, #dcedc1, #aed581);
+    max-width: 400px;
+    width: 100%;
+    margin: 40px 0 20px 40px;
+    background-color: white;
+    border-radius: 8px;
+    padding: 10px 20px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    display: flex-start;
+    flex-direction: column;
+    align-items: center;
+}
+
+.perfil-usuario form {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    width: 100%;
+}
+
+.perfil-usuario form input {
+    font-size: 15px;
+    width: 100%;
+    max-width: 260px;
+    height: 36px;
+    border-radius: 5px;
+    border: 1px solid #ccc;
+    padding: 8px 12px;
+    margin-bottom: 14px;
+    box-sizing: border-box;
+}
+
+.btn-alterar {
+    background-color: #4caf50;
+    color: white;
+    border: none;
+    padding: 10px 24px;
+    font-size: 16px;
+    cursor: pointer;
+    border-radius: 5px;
+    transition: background-color 0.3s ease;
+    margin-top: 12px;
+    width: 100%;
+    max-width: 200px;
+}
+
+.perfil-usuario button:hover {
+    background-color: gray;
+}
+
+.meus-posts {
+    background: linear-gradient(135deg, #a8e6cf, #dcedc1, #aed581);
+    max-width: 500px;
+    width: 100%;
+    border-radius: 8px;
+    padding: 10px 20px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin: 20px 0 0 40px;
+    position: absolute;
+    left: 600px;
+    /* Ajuste para alinhar melhor à direita da .perfil-usuario */
+    top: 100px;
+}
+
+@media (max-width: 600px) {
+    .meus-posts {
+        position: static;
+        margin: 20px 0 0 0;
+        left: unset;
+        top: unset;
+        transform: none;
+    }
+}
+
+@media (max-width: 600px) {
+
+    .perfil-usuario,
+    .meus-posts {
+        max-width: 100%;
+        margin: 20px 0 0 0;
+        padding: 10px 8px;
+    }
+}

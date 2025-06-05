@@ -80,46 +80,47 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
 
 
 <!DOCTYPE html>
-<html lang="en">
+<html lang="pt-br">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="css/perfil.css">
+    <link rel="shortcut icon" href="../assets/icone.png" type="image/x-icon">
     <title>Meu Perfil</title>
 </head>
+
 <body>
-    
+    <?php if (!empty($mensagem)) echo "<p style='color:green;'>$mensagem</p>"; ?>
+    <?php if (!empty($erro)) echo "<p style='color:red;'>$erro</p>"; ?>
 
-<h2>Perfil</h2>
+    <div class="perfil-usuario">
+        <h2 class="align-text">Perfil</h2>
 
-<?php if (!empty($mensagem)) echo "<p style='color:green;'>$mensagem</p>"; ?>
-<?php if (!empty($erro)) echo "<p style='color:red;'>$erro</p>"; ?>
+        <form method="post">
+            <input type="hidden" name="acao" value="atualizar">
+            <label>Nome:</label><br>
+            <input type="text" name="nome" value="<?= htmlspecialchars($_SESSION['usuario']['nome']) ?>" required>
+            <label>Email:</label><br>
+            <input type="email" name="usuario" value="<?= htmlspecialchars($_SESSION['usuario']['usuario']) ?>" required>
+            <button class="btn-alterar" type="submit">Atualizar</button><br>
+        </form>
 
-<form method="post">
-    <input type="hidden" name="acao" value="atualizar">
-    Nome:<br>
-    <input type="text" name="nome" value="<?= htmlspecialchars($_SESSION['usuario']['nome']) ?>" required><br><br>
-    Email:<br>
-    <input type="email" name="usuario" value="<?= htmlspecialchars($_SESSION['usuario']['usuario']) ?>" required><br><br>
-    <button type="submit">Atualizar</button>
-</form>
-
-<hr>
-
-<form method="post">
-    <input type="hidden" name="acao" value="alterar_senha">
-    Senha atual:<br>
-    <input type="password" name="senha_atual" required><br><br>
-    Nova senha:<br>
-    <input type="password" name="nova_senha" required><br><br>
-    Confirmar nova senha:<br>
-    <input type="password" name="confirmar" required><br><br>
-    <button type="submit">Alterar Senha</button>
-</form>
-
-<hr>
-
-<h3>Meus Posts</h3>
-<?php require __DIR__ . '/../posts/meus_posts.php'; ?>
-
+        <form method="post">
+            <input type="hidden" name="acao" value="alterar_senha">
+            <label>Senha atual:</label><br>
+            <input type="password" name="senha_atual" required>
+            <label>Nova senha:</label><br>
+            <input type="password" name="nova_senha" required>
+            <label>Confirmar nova senha:</label><br>
+            <input type="password" name="confirmar" required>
+            <button class="btn-alterar" type="submit">Alterar Senha</button><br>
+        </form>
+    </div>
+    <div class="meus-posts">
+        <h3>Meus Posts</h3>
+        <?php require __DIR__ . '/../posts/meus_posts.php'; ?>
+    </div>
 </body>
+
 </html>
