@@ -1,254 +1,368 @@
+/* --- Estilos Globais --- */
 * {
-  margin: 0px;
-  padding: 0;
-  box-sizing: border-box;
-  font-family: "Roboto", sans-serif;
-  word-break: break-all;
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: "Roboto", sans-serif;
+    word-break: break-word; /* Melhor que break-all para textos em geral */
 }
 
-.post {
-  width: 60%;
-  margin: 0 auto;
-  background-color: white;
-  /* border: 1px solid black; */
-  border-radius: 8px;
-  padding: 15px;
-  margin-bottom: 20px;
-  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
-
-  button {
-    background-color: #4caf50;
-    color: white;
-    border: none;
-    padding: 10px 20px;
-    font-size: 16px;
-    cursor: pointer;
-    border-radius: 5px;
-    transition: background-color 0.3s ease;
-
-    &:hover {
-      background-color: gray;
-    }
-  }
-
-  form {
-    input {
-      font-size: 14px;
-      width: 70%;
-      height: 20px;
-      border-radius: 5px;
-      border: 1px solid #ccc;
-      padding: 10px;
-      margin-bottom: 10px;
-    }
-
-    textarea {
-      font-size: 14px;
-      width: 90%;
-      height: 120px;
-      resize: none;
-      border-radius: 5px;
-      border: 1px solid #ccc;
-      padding: 10px;
-      margin-bottom: 10px;
-    }
-  }
-}
-
-.posts_recentes {
-  background: linear-gradient(135deg, #a8e6cf, #dcedc1, #aed581);
-  width: 50%;
-  margin: 0 auto;
-  /*background-color: white;
-  border: 1px solid black; altere se achar melhor ou para ter uma visão de como as divs estao organizadas*/
-  border-radius: 8px;
-  padding: 15px;
-  margin-bottom: 20px;
-  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
-  display: center;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  margin-top: 20px;
-}
-
-.align-text {
-  display: flex;
-  justify-content: center;
-  text-align: center;
-}
-
-.post-body {
-  height: 100vh;
-  background: linear-gradient(135deg, #a8e6cf, #dcedc1, #aed581);
-  background-size: 400% 400%;
-  animation: backgroundShift 15s ease infinite;
+body {
+    background: linear-gradient(135deg, #a8e6cf, #dcedc1, #aed581);
+    background-size: 400% 400%;
+    animation: backgroundShift 15s ease infinite;
+    min-height: 100vh; /* Garante que o gradiente preencha a tela toda */
 }
 
 @keyframes backgroundShift {
-  0% {
-    background-position: 0% 50%;
-  }
+    0% {
+        background-position: 0% 50%;
+    }
+    50% {
+        background-position: 100% 50%;
+    }
+    100% {
+        background-position: 0% 50%;
+    }
+}
 
-  50% {
-    background-position: 100% 50%;
-  }
+h2 {
+    text-align: center;
+    margin-top: 30px;
+    margin-bottom: 20px;
+    color: #333;
+}
 
-  100% {
-    background-position: 0% 50%;
-  }
+#msg-sucesso {
+    text-align: center;
+    padding: 10px;
+    margin: 10px auto;
+    background-color: #d4edda;
+    color: #155724;
+    border: 1px solid #c3e6cb;
+    border-radius: 5px;
+    max-width: 50%;
+    opacity: 1;
+}
+
+/* --- Contêiner principal dos posts --- */
+.posts_recentes {/* Gradiente ajustado */
+    width: 60%; /* Ajuste a largura para ser a mesma ou maior que o .post */
+    margin: 20px auto;
+    border-radius: 8px;
+    padding: 20px;
+    /* box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); */
+    display: flex;
+    flex-direction: column;
+    align-items: center; /* Centraliza os itens filhos horizontalmente */
+}
+
+/* --- Estilo de cada Post --- */
+.post {
+    width: 95%; /* Ocupa quase toda a largura do .posts_recentes */
+    background-color: white;
+    border-radius: 8px;
+    padding: 20px;
+    margin-bottom: 25px; /* Espaçamento entre posts */
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+.post strong {
+    color: #333;
+}
+
+.post p {
+    margin-top: 10px;
+    line-height: 1.6;
+    color: #555;
+}
+
+.post hr {
+    border: 0;
+    height: 1px;
+    background-color: #eee;
+    margin: 20px 0;
+}
+
+/* --- Imagens do Post --- */
+.post img {
+    max-width: 100%;
+    height: auto;
+    margin: 15px 0; /* Espaçamento da imagem */
+    border-radius: 5px;
+    display: block; /* Garante que não haja espaço extra abaixo da imagem */
+}
+
+/* --- Seção de Curtidas --- */
+.likes-section {
+    display: flex;
+    align-items: center;
+    gap: 10px; /* Espaço entre o botão e a contagem */
+    margin-top: 15px;
+}
+
+.likes-section button { /* Estilo específico para o botão de curtir */
+    background-color: #007bff; /* Azul para curtir */
+    color: white;
+    border: none;
+    padding: 8px 15px;
+    font-size: 0.9em;
+    cursor: pointer;
+    border-radius: 5px;
+    transition: background-color 0.3s ease;
+}
+
+.likes-section button:hover {
+    background-color: #0056b3;
+}
+
+.contagem-curtidas {
+    font-weight: bold;
+    color: #555;
+    font-size: 0.9em;
+}
+
+/* --- Seção de Comentários --- */
+.comentarios {
+    margin-top: 20px;
+    padding-top: 10px;
+}
+
+.comentario-item { /* Nova classe para cada div de comentário */
+    background-color: #fcfcfc;
+    border: 1px solid #eee;
+    border-radius: 6px;
+    padding: 12px;
+    margin-bottom: 10px;
+    position: relative; /* Para posicionar botões de editar/excluir */
+}
+
+.comentario-item strong {
+    color: #444;
+    font-size: 0.95em;
+}
+
+.comentario-item p { /* Estilo para o texto do comentário */
+    margin-top: 5px;
+    margin-bottom: 5px;
+    font-size: 0.9em;
+    color: #666;
+    line-height: 1.5;
+}
+
+.comentario-item form { /* Formulário de edição de comentário */
+    display: flex;
+    flex-direction: column;
+    gap: 5px;
+    margin-top: 5px;
+}
+
+.comentario-item textarea {
+    width: calc(100% - 20px); /* Ajusta a largura para não vazar */
+    height: 60px; /* Altura menor para edição */
+    resize: vertical; /* Permite redimensionar verticalmente */
+    font-size: 0.9em;
+    padding: 8px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+}
+
+.comentario-item form button {
+    background-color: #28a745; /* Verde para salvar */
+    color: white;
+    border: none;
+    padding: 6px 12px;
+    font-size: 0.85em;
+    border-radius: 4px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+    align-self: flex-start; /* Alinha o botão à esquerda dentro do flex container */
+}
+
+.comentario-item form button:hover {
+    background-color: #218838;
+}
+
+.comentario-item form a { /* Botão cancelar na edição */
+    display: inline-block;
+    background-color: #6c757d; /* Cinza para cancelar */
+    color: white;
+    padding: 6px 12px;
+    font-size: 0.85em;
+    border-radius: 4px;
+    text-decoration: none;
+    transition: background-color 0.3s ease;
+    margin-left: 5px;
+}
+
+.comentario-item form a:hover {
+    background-color: #5a6268;
+}
+
+/* --- Botões de Editar/Excluir Comentário --- */
+.btn-comment-action { /* Classe geral para os botões de ação do comentário */
+    background-color: #007bff; /* Azul para editar */
+    color: white;
+    border: none;
+    padding: 5px 10px;
+    font-size: 0.75em; /* Tamanho menor */
+    cursor: pointer;
+    border-radius: 4px;
+    transition: background-color 0.3s ease;
+    margin-left: 5px; /* Espaço entre o texto e o botão */
+    text-decoration: none; /* Se for um link (<a>) */
+    display: inline-block; /* Para garantir que padding funcione bem */
+}
+
+.btn-comment-action:hover {
+    background-color: #0056b3;
+}
+
+.btn-excluir-comentario { /* Botão de excluir comentário */
+    background-color: #dc3545; /* Vermelho para excluir */
+    color: white;
+    border: none;
+    padding: 5px 10px;
+    font-size: 0.75em;
+    cursor: pointer;
+    border-radius: 4px;
+    transition: background-color 0.3s ease;
+    margin-left: 5px;
+}
+
+.btn-excluir-comentario:hover {
+    background-color: #c82333;
+}
+
+/* --- Formulário para Adicionar Comentário --- */
+.form-comentar {
+    margin-top: 20px;
+    padding-top: 15px;
+    border-top: 1px dashed #eee;
+}
+
+.form-comentar textarea {
+    width: 95%; /* Ocupa quase toda a largura do .post */
+    height: 80px; /* Altura padrão para escrever comentário */
+    resize: vertical;
+    font-size: 1em;
+    padding: 10px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    margin-bottom: 10px;
+}
+
+.form-comentar button {
+    background-color: #28a745; /* Verde para comentar */
+    color: white;
+    border: none;
+    padding: 10px 20px;
+    font-size: 1em;
+    cursor: pointer;
+    border-radius: 5px;
+    transition: background-color 0.3s ease;
+}
+
+.form-comentar button:hover {
+    background-color: #218838;
+}
+
+/* --- Classes de Botões Gerais (para outros formulários) --- */
+.btn-excluir, .btn-editar {
+    background-color: #4caf50; /* Verde padrão para botões */
+    color: white;
+    border: none;
+    padding: 10px 20px;
+    font-size: 16px;
+    cursor: pointer;
+    border-radius: 5px;
+    transition: background-color 0.3s ease;
+    margin-top: 10px; /* Adicionado para espaçamento */
+}
+
+.btn-excluir:hover, .btn-editar:hover {
+    background-color: gray;
+}
+
+/* --- Estilos para formulários de criar/editar post (seções que não estão no loop principal) --- */
+.criar-post, .editar-post {
+    width: 60%; /* Ajustado para ser consistente com .posts_recentes */
+    margin: 20px auto;
+    background-color: white;
+    border-radius: 8px;
+    padding: 20px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+.criar-post button, .editar-post button {
+    background-color: #4caf50;
+    color: white;
+    border: none;
+    padding: 10px 20px;
+    font-size: 16px;
+    cursor: pointer;
+    border-radius: 5px;
+    transition: background-color 0.3s ease;
+}
+
+.criar-post button:hover, .editar-post button:hover {
+    background-color: gray;
+}
+
+.criar-post form input, .editar-post form input {
+    font-size: 14px;
+    width: calc(100% - 20px); /* Ajusta a largura para não vazar */
+    height: 40px;
+    border-radius: 5px;
+    border: 1px solid #ccc;
+    padding: 10px;
+    margin-bottom: 10px;
+}
+
+.criar-post form textarea, .editar-post form textarea {
+    font-size: 14px;
+    width: calc(100% - 20px); /* Ajusta a largura para não vazar */
+    height: 120px;
+    resize: vertical;
+    border-radius: 5px;
+    border: 1px solid #ccc;
+    padding: 10px;
+    margin-bottom: 10px;
+}
+
+/* --- Outras classes existentes --- */
+.align-text {
+    text-align: center; /* Removi display:flex e justify-content:center pois não eram necessários aqui */
 }
 
 .custom-file-upload {
-  display: inline-block;
-  padding: 10px 20px;
-  background-color: #4caf50;
-  color: white;
-  border-radius: 5px;
-  cursor: pointer;
-  font-size: 14px;
-  margin-bottom: 10px;
+    display: inline-block;
+    padding: 10px 20px;
+    background-color: #4caf50;
+    color: white;
+    border-radius: 5px;
+    cursor: pointer;
+    font-size: 14px;
+    margin-bottom: 10px;
 }
 
 .custom-file-upload:hover {
-  background-color: #388e3c;
+    background-color: #388e3c;
 }
 
 .file-upload-wrapper {
-  margin-bottom: 15px;
+    margin-bottom: 15px;
 }
 
 #file-name {
-  display: inline;
+    display: inline;
 }
 
 #map-container {
-  height: 30%;
-  width: 30%;
+    height: 30%;
+    width: 30%;
 }
 
-.btn-excluir {
-  background-color: #4caf50;
-  color: white;
-  border: none;
-  padding: 10px 20px;
-  font-size: 16px;
-  cursor: pointer;
-  border-radius: 5px;
-  transition: background-color 0.3s ease;
-
-  &:hover {
-    background-color: gray;
-  }
-}
-
-.btn-editar {
-  background-color: #4caf50;
-  color: white;
-  border: none;
-  padding: 10px 20px;
-  font-size: 16px;
-  cursor: pointer;
-  border-radius: 5px;
-  transition: background-color 0.3s ease;
-
-  &:hover {
-    background-color: gray;
-  }
-}
-
-.criar-post {
-  width: 50%;
-  margin: 0 auto;
-  background-color: white;
-  border-radius: 8px;
-  padding: 15px;
-  margin-bottom: 20px;
-  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
-
-  button {
-    background-color: #4caf50;
-    color: white;
-    border: none;
-    padding: 10px 20px;
-    font-size: 16px;
-    cursor: pointer;
-    border-radius: 5px;
-    transition: background-color 0.3s ease;
-
-    &:hover {
-      background-color: gray;
-    }
-  }
-
-  form {
-    input {
-      font-size: 14px;
-      width: 70%;
-      height: 40px;
-      border-radius: 5px;
-      border: 1px solid #ccc;
-      padding: 10px;
-      margin-bottom: 10px;
-    }
-
-    textarea {
-      font-size: 14px;
-      width: 90%;
-      height: 120px;
-      resize: none;
-      border-radius: 5px;
-      border: 1px solid #ccc;
-      padding: 10px;
-      margin-bottom: 10px;
-    }
-  }
-}
-
-.editar-post {
-  width: 50%;
-  margin: 0 auto;
-  background-color: white;
-  border-radius: 8px;
-  padding: 15px;
-  margin-bottom: 20px;
-  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
-
-  button {
-    background-color: #4caf50;
-    color: white;
-    border: none;
-    padding: 10px 20px;
-    font-size: 16px;
-    cursor: pointer;
-    border-radius: 5px;
-    transition: background-color 0.3s ease;
-
-    &:hover {
-      background-color: gray;
-    }
-  }
-
-  form {
-    input {
-      font-size: 14px;
-      width: 70%;
-      height: 40px;
-      border-radius: 5px;
-      border: 1px solid #ccc;
-      padding: 10px;
-      margin-bottom: 10px;
-    }
-
-    textarea {
-      font-size: 14px;
-      width: 90%;
-      height: 120px;
-      resize: none;
-      border-radius: 5px;
-      border: 1px solid #ccc;
-      padding: 10px;
-      margin-bottom: 10px;
-    }
-  }
+.post-title{
+  text-align: left;
 }

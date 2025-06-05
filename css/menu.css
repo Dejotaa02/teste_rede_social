@@ -28,6 +28,6 @@ header {
   align-items: right;
 }
 
-.menu-list :hover {
-  background-color: gray;
+.link-item:hover {
+  background-color: red;
 }
