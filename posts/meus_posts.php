@@ -22,34 +22,51 @@ $sql = "
 ";
 $result = $db->query($sql, [':usuario_id' => $usuario['id']]);
 $postagens = $result['status'] === 'success' ? $result['data'] : [];
-
-if (empty($postagens)) {
-    echo "<p>Você ainda não publicou nada.</p>";
-} else {
-    foreach ($postagens as $post) {
-        echo "<div style='border:1px solid #ccc; padding:10px; margin-bottom:10px;'>";
-        echo "<h3>" . htmlspecialchars($post['titulo']) . "</h3>";
-
-        // Exibe a imagem do post, se existir
-        if (!empty($post['imagem'])) {
-            echo '<img src="' . htmlspecialchars($post['imagem']) . '" alt="Imagem do post" style="max-width:100%; height:auto; margin:10px 0;">';
-        }
-
-        echo "<p>" . nl2br(htmlspecialchars($post['conteudo'])) . "</p>";
-        echo "<small>Postado em " . date("d/m/Y H:i", strtotime($post['criado_em'])) . " | ";
-        if (!empty($post['editado_em'])) {
-            echo "Editado em " . date("d/m/Y H:i", strtotime($post['editado_em'])) . " | ";
-        }
-        echo $post['curtidas'] . " curtidas | ";
-        echo $post['comentarios'] . " comentários";
-        echo "</small><br><br>";
-
-        echo "<a href='index.php?rota=editar_post&id={$post['id']}'><button>Editar</button></a> ";
-        echo "<form action='index.php?rota=excluir_post' method='post' style='display:inline;'>
-                <input type='hidden' name='post_id' value='{$post['id']}'>
-                <button type='submit' onclick=\"return confirm('Tem certeza que deseja excluir este post?')\">Excluir</button>
-              </form>";
-        echo "</div>";
-    }
-}
 ?>
+<!DOCTYPE html>
+<html lang="pt-br">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="css/perfil.css">
+    <title>Meus Posts</title>
+</head>
+
+<body>
+    <div class="posts-perfil">
+        <?php
+        if (empty($postagens)) {
+            echo "<p>Você ainda não publicou nada.</p>";
+        } else {
+            foreach ($postagens as $post) {
+                echo "<div style='border:1px solid #ccc; padding:10px; margin-bottom:10px;'>";
+                echo "<h3>" . htmlspecialchars($post['titulo']) . "</h3>";
+
+                // Exibe a imagem do post, se existir
+                if (!empty($post['imagem'])) {
+                    echo '<img src="' . htmlspecialchars($post['imagem']) . '" alt="Imagem do post" style="max-width:100%; height:auto; margin:10px 0;">';
+                }
+
+                echo "<p>" . nl2br(htmlspecialchars($post['conteudo'])) . "</p>";
+                echo "<small>Postado em " . date("d/m/Y H:i", strtotime($post['criado_em'])) . " | ";
+                if (!empty($post['editado_em'])) {
+                    echo "Editado em " . date("d/m/Y H:i", strtotime($post['editado_em'])) . " | ";
+                }
+                echo $post['curtidas'] . " curtidas | ";
+                echo $post['comentarios'] . " comentários";
+                echo "</small><br><br>";
+
+                echo "<a class='btn-editar' href='index.php?rota=editar_post&id={$post['id']}'>Editar</a> ";
+                echo "<form action='index.php?rota=excluir_post' method='post' style='display:inline;'>
+                <input type='hidden' name='post_id' value='{$post['id']}'>
+                <button class='btn-excluir' type='submit' onclick=\"return confirm('Tem certeza que deseja excluir este post?')\">Excluir</button>
+              </form>";
+                echo "</div>";
+            }
+        }
+        ?>
+    </div>
+</body>
+
+</html>

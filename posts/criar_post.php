@@ -99,7 +99,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     <title>Base de dados</title>
 </head>
 
-<body class="post-body">
+<body>
 
     <?php if (!empty($_SESSION['erro'])): ?>
         <div id="msg-erro" style="color:red;">
@@ -116,8 +116,10 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
             <textarea name="conteudo" placeholder="Escreva seu post" required class="input-post"></textarea>
 
             <div class="file-upload-wrapper">
-                <label for="foto" class="custom-file-upload">Anexe uma imagem</label>
-                <input type="file" name="imagem" id="imagem" class="input-photo" accept="image/*" capture="environment">
+                <label for="imagem" class="custom-file-upload">
+                    Anexe uma imagem
+                    <input type="file" name="imagem" id="imagem" accept="image/*" capture="environment" style="display: none">
+                </label>
                 <p id="file-name"></p>
             </div>
 
@@ -128,7 +130,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
             <button type="submit">Publicar</button>
         </form>
     </div>
-    
+
     <script>
         window.onload = function() {
             const msgErro = document.getElementById('msg-erro');
@@ -146,4 +148,5 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     <!-- colocar chave da api -->
     <script async src="https://maps.googleapis.com/maps/api/js?key=&callback=initMap"></script>
 </body>
+
 </html>

@@ -23,13 +23,13 @@ if (!isset($_SESSION)) session_start();
     <nav class="main-menu">
     <?php if (isset($_SESSION['usuario'])): ?>
         <ul class="menu-list">
-            <span>Olá, <strong><?= htmlspecialchars($_SESSION['usuario']['nome']) ?> </span> |
-        <a href="index.php?rota=home" class="link-item">Início</a> |
-        <a href="index.php?rota=criar_post" class="link-item">Novo Post</a> |
-        <a href="index.php?rota=perfil" class="link-item">Meu Perfil</a> |
+            <span>Olá, <strong><?= htmlspecialchars($_SESSION['usuario']['nome']) ?> </span>
+        <a href="index.php?rota=home" class="link-item">Início</a>
+        <a href="index.php?rota=criar_post" class="link-item">Novo Post</a>
+        <a href="index.php?rota=perfil" class="link-item">Meu Perfil</a>
         <a href="index.php?rota=logout" class="link-item">Sair</a>
     <?php else: ?>
-        <a href="index.php?rota=login" class="link-item">Login</a> |
+        <a href="index.php?rota=login" class="link-item">Login</a>
         <a href="index.php?rota=registro" class="link-item">Registrar</a>
     <?php endif; ?>
         </ul>

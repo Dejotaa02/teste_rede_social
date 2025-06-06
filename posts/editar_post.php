@@ -88,24 +88,45 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     }
 }
 ?>
+<!DOCTYPE html>
+<html lang="pt-br">
 
-<h2>Editar Post</h2>
-<form method="post" enctype="multipart/form-data">
-    Título:<br>
-    <input type="text" name="titulo" value="<?= htmlspecialchars($post['titulo']) ?>" required><br><br>
-    
-    Conteúdo:<br>
-    <textarea name="conteudo" rows="5" cols="40" required><?= htmlspecialchars($post['conteudo']) ?></textarea><br><br>
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="css/home.css">
+    <title>Editar Post</title>
+</head>
 
-    <?php if (!empty($post['imagem'])): ?>
-        <p>Imagem atual:</p>
-        <img src="<?= htmlspecialchars($post['imagem']) ?>" alt="Imagem do post" style="max-width:200px; height:auto; margin-bottom:10px;"><br>
-        <input type="hidden" name="imagem_antiga" value="<?= htmlspecialchars($post['imagem']) ?>">
-    <?php endif; ?>
+<body>
+    <h2 class="align-text">Editar Post</h2>
+    <div class="criar-post">
+        <form method="post" enctype="multipart/form-data">
+            Título:<br>
+            <input type="text" name="titulo" value="<?= htmlspecialchars($post['titulo']) ?>" required><br><br>
 
-    Alterar imagem:<br>
-    <input type="file" name="imagem" accept="image/*"><br><br>
+            Conteúdo:<br>
+            <textarea name="conteudo" rows="5" cols="40" required><?= htmlspecialchars($post['conteudo']) ?></textarea><br><br>
 
-    <button type="submit">Salvar</button>
-    <a href="index.php?rota=perfil"><button type="button">Cancelar</button></a>
-</form>
+            <?php if (!empty($post['imagem'])): ?>
+                <p>Imagem atual:</p><br>
+                <img src="<?= htmlspecialchars($post['imagem']) ?>" alt="Imagem do post" style="max-width:200px; height:auto; margin-bottom:10px;"><br>
+                <input type="hidden" name="imagem_antiga" value="<?= htmlspecialchars($post['imagem']) ?>">
+            <?php endif; ?>
+
+            <div class="file-upload-wrapper">
+                <label for="imagem" class="custom-file-upload">
+                    Alterar imagem
+                    <input type="file" name="imagem" id="imagem" accept="image/*" capture="environment" style="display: none">
+                </label><br>
+                <p id="file-name"></p>
+            </div>
+                <button type="submit">Salvar</button>
+                <a href="index.php?rota=perfil"><button type="button">Cancelar</button></a>
+            </div>
+        </form>
+    </div>
+
+</body>
+
+</html>

@@ -20,12 +20,12 @@ body {
     background: linear-gradient(135deg, #a8e6cf, #dcedc1, #aed581);
     max-width: 400px;
     width: 100%;
-    margin: 40px 0 20px 40px;
     background-color: white;
+    margin: 40px auto 20px auto;
     border-radius: 8px;
     padding: 10px 20px;
     box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
-    display: flex-start;
+    display: flex;
     flex-direction: column;
     align-items: center;
 }
@@ -71,17 +71,14 @@ body {
     background: linear-gradient(135deg, #a8e6cf, #dcedc1, #aed581);
     max-width: 500px;
     width: 100%;
+    position: relative;
     border-radius: 8px;
     padding: 10px 20px;
     box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
     display: flex;
     flex-direction: column;
     align-items: center;
-    margin: 20px 0 0 40px;
-    position: absolute;
-    left: 600px;
-    /* Ajuste para alinhar melhor à direita da .perfil-usuario */
-    top: 100px;
+    margin: 40px auto 20px auto;
 }
 
 @media (max-width: 600px) {
@@ -102,4 +99,30 @@ body {
         margin: 20px 0 0 0;
         padding: 10px 8px;
     }
+}
+
+
+.posts-perfil {
+    margin-top: 10px;
+    width: 100%;
+}
+
+.btn-editar,
+.btn-excluir {
+    background-color: #007bff;
+    /* Azul para editar */
+    color: white;
+    border: none;
+    padding: 6px 12px;
+    font-size: 0.85em;
+    /* Tamanho menor */
+    cursor: pointer;
+    border-radius: 4px;
+    transition: background-color 0.3s ease;
+    margin-left: 5px;
+    /* Espaço entre o texto e o botão */
+    text-decoration: none;
+    /* Se for um link (<a>) */
+    display: inline-block;
+    /* Para garantir que padding funcione bem */
 }
