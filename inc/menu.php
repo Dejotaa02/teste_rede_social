@@ -16,10 +16,7 @@ if (!isset($_SESSION)) session_start();
     <link rel="shortcut icon" href="assets/icone.png" type="image/x-icon">
 </head>
 <body>
-    
-</body>
-</html>
-<header class="site-header">
+    <header class="site-header">
     <nav class="main-menu">
     <?php if (isset($_SESSION['usuario'])): ?>
         <ul class="menu-list">
@@ -35,5 +32,9 @@ if (!isset($_SESSION)) session_start();
         </ul>
 </nav>
 </header>
+
+</body>
+</html>
+
 
 
