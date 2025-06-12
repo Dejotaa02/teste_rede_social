@@ -45,13 +45,13 @@ unset($_SESSION['error']);
             </div>
             <div class="input-box">
                 <div class="checkbox-field">
-                    <label for="especialista-checkbox">Desejo criar uma conta como especialista</label>
                     <input type="checkbox" id="especialista" name="especialista-checkbox" class="check-especialista">
+                    <label for="especialista-checkbox">Desejo criar uma conta como especialista</label>
                 </div>
             </div>
 
             <div class="input-box">
-                <input type="url" id="lattes" placeholder="Insira seu currículo Lattes">
+                <input type="url" id="lattes" placeholder="Currículo Lattes">
                  <i class="bx bxs-clipboard"></i>
             </div>
 
