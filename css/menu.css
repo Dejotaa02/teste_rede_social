@@ -4,10 +4,21 @@
   box-sizing: border-box;
   font-family: "Roboto", sans-serif;
 }
-
-header {
+.site-header{
   background-color: #558b2f;
-  /* Verde musgo escuro */
+  color: #fff;
+  padding: 1rem;
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+}
+.main-menu{
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  flex-wrap: wrap;
+}
+
+/* header {
+  background-color: #558b2f;
   color: white;
   padding: 1rem;
   text-align: center;
@@ -15,9 +26,16 @@ header {
   justify-content: flex-end;
   align-items: center;
   box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
-}
+} */
 
-.menu-list a {
+.menu-list{
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px;
+  list-style: none;
+  align-items: center;
+}
+/* .menu-list a {
   display: inline-block;
   text-decoration: none;
   color: white;
@@ -27,13 +45,89 @@ header {
   border-radius: 5px;
   justify-content: center;
   align-items: right;
-}
+} */
 
 .link-item {
   text-decoration: none;
-  color: white;
+  color: #fff;
+  background-color: rgba(0, 0, 0, 0.1);
+  padding: 10px 15px;
+  border-radius: 8px;
+  transition: background-color 0.3s;
+}
+.link-item:hover{
+  background-color: rgba(0, 0,0, 0.3);
+}
+
+.menu-list span{
+  margin-right: 15px;
+  font-weight: bold;
+}
+
+.menu-toggle {
+  display: none;
+  flex-direction: column;
+  justify-content: center;
+  gap: 5px;
+  cursor: pointer;
+  padding: 10px;
+}
+
+.menu-toggle span {
+  display: block;
+  width: 25px;
+  height: 3px;
+  background-color: white;
+  border-radius: 2px;
+}
+
+@media (max-width: 768px) {
+  .main-menu {
+    flex-direction: column;
+    align-items: flex-start;
+  }
+
+  .menu-list {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 15px;
+    margin-top: 10px;
+  }
+
+  .link-item {
+    width: 100%;
+    text-align: left;
+  }
+}
+
+/* Estilos para telas pequenas */
+@media (max-width: 390px) {
+  /* Estilos para telas pequenas */
+  .menu-toggle {
+    display: flex;
+  }
+
+.menu-list {
+  flex-direction: column !important;
+  align-items: flex-start !important;
+  width: 100% !important;
+  display: none !important;
+  gap: 20px !important;
+}
+.menu-list li {
   list-style: none;
-  padding: 10px 20px;
-  border-radius: 5px;
-  display: inline-block;
+  width: 100%;
+}
+
+.menu-list.show {
+  display: flex !important;
+}
+
+  .link-item {
+    width: 100%;
+    text-align: left;
+    padding: 10px 20px;
+    display: block;
+    margin-bottom: 0.5rem;
+  }
 }
