@@ -10,9 +10,8 @@ body{
     justify-content: center;
     align-items: center;
     min-height: 100vh;
-    background: url("../assets/login-screen-2.jpg");
+    background: url("../assets/login-screen-2.jpg")  no-repeat center center fixed;
     background-size: cover;
-    background-position: center;
     padding: 10px;
 }
 
@@ -138,6 +137,8 @@ body{
     text-transform: uppercase;
     text-align: center;
 }
+
+/* Estilos aplicados quando a largura é 480px ou menos */
 @media (max-width: 480px) {
     .remember-password {
         flex-direction: column;

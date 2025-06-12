@@ -10,18 +10,19 @@ body {
     justify-content: center;
     align-items: center;
     min-height: 100vh;
-    background: url("../assets/login-screen-2.jpg");
+    background: url("../assets/login-screen-2.jpg")  no-repeat center center fixed;
     background-size: cover;
-    background-position: center;
+    padding: 10px;
 }
 
 .container {
-    width: 420px;
+    width: 100%;
+    max-width: 420px;
     background-color: transparent;
     border: 3px solid rgba(255, 255, 255, .3);
     border-radius: 10px;
     color: #fff;
-    padding: 30px 40px;
+    padding: 30px 20px;
     box-shadow: rgba(0, 0, 0, 0.25) 0px 54px 55px, rgba(0, 0, 0, 0.12) 0px -12px 30px, rgba(0, 0, 0, 0.12) 0px 4px 6px, rgba(0, 0, 0, 0.17) 0px 12px 13px, rgba(0, 0, 0, 0.09) 0px -3px 5px;
 
     backdrop-filter: blur(120px);
@@ -129,4 +130,48 @@ body {
 
 #lattes{
     display: none;
+}
+
+@media (max-width: 480px) {
+    .container {
+        padding: 25px 15px;
+    }
+
+    .container h1 {
+        font-size: 28px;
+    }
+
+    .input-box {
+        margin: 20px 0;
+        height: 45px;
+    }
+
+    .input-box input {
+        font-size: 14px;
+        padding: 16px 40px 16px 16px;
+    }
+
+    .input-box i {
+        font-size: 18px;
+        right: 16px;
+    }
+
+    .login-btn {
+        height: 45px;
+        font-size: 14px;
+    }
+
+    .checkbox-field {
+        flex-direction: column;
+        align-items: flex-start;
+        gap: 4px;
+    }
+
+    .check-especialista {
+        transform: scale(1.5);
+    }
+
+    .voltar-link {
+        font-size: 12px;
+    }
 }
