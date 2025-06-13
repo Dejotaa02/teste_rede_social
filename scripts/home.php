@@ -80,7 +80,7 @@ $postagens = $result['status'] === 'success' ? $result['data'] : [];
                                 <button type="submit"><?= $ja_curtiu ? 'Descurtir' : 'Curtir' ?></button>
                             </form>
                         <?php endif; ?>
-                        (<span class="contagem-curtidas"><?= $post['curtidas'] ?></span> curtidas)
+                        <span class="contagem-curtidas"> <?= $post['curtidas']?> curtida(s)</span> 
                     </div>
 
                     <hr>

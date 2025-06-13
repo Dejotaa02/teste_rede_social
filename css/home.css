@@ -289,4 +289,55 @@ h2 {
     background-color: gray;
 }
 
-/* --- Estilos para formulários de criar/editar post (seções que não estão no loop principal) --- */
+@media (max-width: 768px) {
+    .posts_recentes {
+        width: 95%;
+        padding: 10px;
+    }
+
+    .post {
+        width: 100%;
+        padding: 15px;
+    }
+
+    .form-comentar textarea,
+    .comentario-item textarea {
+        width: 100%;
+    }
+
+    .form-comentar button,
+    .comentario-item form button,
+    .comentario-item form a,
+    .likes-section button,
+    .btn-comment-action,
+    .btn-excluir-comentario {
+        width: auto; 
+        padding: 8px 12px; 
+        font-size: 1em;
+    }
+
+    .likes-section {
+        flex-direction: column;
+        align-items: flex-start;
+        gap: 5px;
+    }
+
+    #msg-sucesso {
+        max-width: 90%;
+        font-size: 0.95em;
+    }
+
+    h2 {
+        font-size: 1.3em;
+    }
+
+    .post-title {
+        font-size: 1.1em;
+    }
+
+    .post-content {
+        font-size: 1em;
+    }
+}
+
+
