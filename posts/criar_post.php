@@ -94,7 +94,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="css/home.css">
+    <link rel="stylesheet" href="css/criarPost.css">
     <link rel="shortcut icon" href="../assets/icone.png" type="image/x-icon">
     <title>Base de dados</title>
 </head>
@@ -146,7 +146,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
 
     <script src="scripts/js_scripts/post.js"></script>
     <!-- colocar chave da api -->
-    <script async src="https://maps.googleapis.com/maps/api/js?key=&callback=initMap"></script>
+    <script async src="https://maps.googleapis.com/maps/api/js?key=AIzaSyCYwlWLDs3OP7MXFBpUgE-neslVaryVb98&callback=initMap"></script>
 </body>
 
 </html>
