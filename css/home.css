@@ -4,14 +4,14 @@
     padding: 0;
     box-sizing: border-box;
     font-family: "Roboto", sans-serif;
-    word-break: break-word; /* Melhor que break-all para textos em geral */
+    word-break: break-word;
 }
 
 body {
     background: linear-gradient(135deg, #a8e6cf, #dcedc1, #aed581);
     background-size: 400% 400%;
     animation: backgroundShift 15s ease infinite;
-    min-height: 100vh; /* Garante que o gradiente preencha a tela toda */
+    min-height: 100vh; 
 }
 
 @keyframes backgroundShift {
@@ -45,27 +45,27 @@ h2 {
     opacity: 1;
 }
 
-/* --- Contêiner principal dos posts --- */
-.posts_recentes {/* Gradiente ajustado */
-    width: 60%; /* Ajuste a largura para ser a mesma ou maior que o .post */
+
+.posts_recentes {
+    width: 60%; 
     margin: 20px auto;
     border-radius: 8px;
     padding: 20px;
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-    margin-bottom: 25px; /* Espaço entre as sombras das caixas */
+    margin-bottom: 25px; 
     display: flex;
     flex-direction: column;
-    align-items: center; /* Centraliza os itens filhos horizontalmente */
-    gap: 25px; /* Espaço entre os posts */
+    align-items: center; 
+    gap: 25px;
 }
 
-/* --- Estilo de cada Post --- */
+
 .post {
-    width: 95%; /* Ocupa quase toda a largura do .posts_recentes */
+    width: 95%;
     background-color: white;
     border-radius: 8px;
     padding: 20px;
-    margin-bottom: 25px; /* Espaçamento entre posts */
+    margin-bottom: 25px; 
     box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
 }
 
@@ -86,25 +86,25 @@ h2 {
     margin: 20px 0;
 }
 
-/* --- Imagens do Post --- */
+
 .post img {
     max-width: 100%;
     height: auto;
-    margin: 15px 0; /* Espaçamento da imagem */
+    margin: 15px 0; 
     border-radius: 5px;
-    display: block; /* Garante que não haja espaço extra abaixo da imagem */
+    display: block; 
 }
 
-/* --- Seção de Curtidas --- */
+
 .likes-section {
     display: flex;
     align-items: center;
-    gap: 10px; /* Espaço entre o botão e a contagem */
+    gap: 10px; 
     margin-top: 15px;
 }
 
-.likes-section button { /* Estilo específico para o botão de curtir */
-    background-color: #007bff; /* Azul para curtir */
+.likes-section button { 
+    background-color: #007bff; 
     color: white;
     border: none;
     padding: 8px 15px;
@@ -124,19 +124,19 @@ h2 {
     font-size: 0.9em;
 }
 
-/* --- Seção de Comentários --- */
+
 .comentarios {
     margin-top: 20px;
     padding-top: 10px;
 }
 
-.comentario-item { /* Nova classe para cada div de comentário */
+.comentario-item { 
     background-color: #fcfcfc;
     border: 1px solid #eee;
     border-radius: 6px;
     padding: 12px;
     margin-bottom: 10px;
-    position: relative; /* Para posicionar botões de editar/excluir */
+    position: relative;
 }
 
 .comentario-item strong {
@@ -144,7 +144,7 @@ h2 {
     font-size: 0.95em;
 }
 
-.comentario-item p { /* Estilo para o texto do comentário */
+.comentario-item p { 
     margin-top: 5px;
     margin-bottom: 5px;
     font-size: 0.9em;
@@ -152,7 +152,7 @@ h2 {
     line-height: 1.5;
 }
 
-.comentario-item form { /* Formulário de edição de comentário */
+.comentario-item form { 
     display: flex;
     flex-direction: column;
     gap: 5px;
@@ -160,9 +160,9 @@ h2 {
 }
 
 .comentario-item textarea {
-    width: calc(100% - 20px); /* Ajusta a largura para não vazar */
-    height: 60px; /* Altura menor para edição */
-    resize: vertical; /* Permite redimensionar verticalmente */
+    width: calc(100% - 20px); 
+    height: 60px; 
+    resize: vertical; 
     font-size: 0.9em;
     padding: 8px;
     border: 1px solid #ccc;
@@ -170,7 +170,7 @@ h2 {
 }
 
 .comentario-item form button {
-    background-color: #28a745; /* Verde para salvar */
+    background-color: #28a745; 
     color: white;
     border: none;
     padding: 6px 12px;
@@ -178,16 +178,16 @@ h2 {
     border-radius: 4px;
     cursor: pointer;
     transition: background-color 0.3s ease;
-    align-self: flex-start; /* Alinha o botão à esquerda dentro do flex container */
+    align-self: flex-start; 
 }
 
 .comentario-item form button:hover {
     background-color: #218838;
 }
 
-.comentario-item form a { /* Botão cancelar na edição */
+.comentario-item form a { 
     display: inline-block;
-    background-color: #6c757d; /* Cinza para cancelar */
+    background-color: #6c757d; 
     color: white;
     padding: 6px 12px;
     font-size: 0.85em;
@@ -290,85 +290,3 @@ h2 {
 }
 
 /* --- Estilos para formulários de criar/editar post (seções que não estão no loop principal) --- */
-.criar-post, .editar-post {
-    width: 60%; /* Ajustado para ser consistente com .posts_recentes */
-    margin: 20px auto;
-    background-color: white;
-    border-radius: 8px;
-    padding: 20px;
-    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
-}
-
-.criar-post button, .editar-post button {
-    background-color: #4caf50;
-    color: white;
-    border: none;
-    padding: 10px 20px;
-    font-size: 16px;
-    cursor: pointer;
-    border-radius: 5px;
-    transition: background-color 0.3s ease;
-}
-
-.criar-post button:hover, .editar-post button:hover {
-    background-color: gray;
-}
-
-.criar-post form input, .editar-post form input {
-    font-size: 14px;
-    width: calc(100% - 20px); /* Ajusta a largura para não vazar */
-    height: 40px;
-    border-radius: 5px;
-    border: 1px solid #ccc;
-    padding: 10px;
-    margin-bottom: 10px;
-}
-
-.criar-post form textarea, .editar-post form textarea {
-    font-size: 14px;
-    width: calc(100% - 20px); /* Ajusta a largura para não vazar */
-    height: 120px;
-    resize: vertical;
-    border-radius: 5px;
-    border: 1px solid #ccc;
-    padding: 10px;
-    margin-bottom: 10px;
-}
-
-/* --- Outras classes existentes --- */
-.align-text {
-    text-align: center; /* Removi display:flex e justify-content:center pois não eram necessários aqui */
-}
-
-.custom-file-upload {
-    display: inline-block;
-    padding: 10px 20px;
-    background-color: #4caf50;
-    color: white;
-    border-radius: 5px;
-    cursor: pointer;
-    font-size: 14px;
-    margin-bottom: 10px;
-    border-style: none;
-}
-
-.custom-file-upload:hover {
-    background-color: #388e3c;
-}
-
-.file-upload-wrapper {
-    margin-bottom: 15px;
-}
-
-#file-name {
-    display: inline;
-}
-
-#map-container {
-    height: 30%;
-    width: 30%;
-}
-
-.post-title{
-  text-align: left;
-}
