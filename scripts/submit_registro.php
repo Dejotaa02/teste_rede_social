@@ -14,11 +14,17 @@ require_once __DIR__ . '/../inc/db_database.php';
 $nome = $_POST['nome'] ?? null;
 $usuario = $_POST['usuario'] ?? null;
 $senha = $_POST['senha'] ?? null;
+$lattes = $_POST['lattes'] ?? null;
 
 if (empty($nome) || empty($usuario) || empty($senha) || strlen($senha) < 6) {
     $_SESSION['error'] = 'Preencha todos os campos corretamente! Senha deve ter no mínimo 6 caracteres.';
     header('Location: index.php?rota=registro');
     exit;
+}
+if (empty($lattes)){
+    $lattes = "comum";
+} else {
+    $lattes = "especialista";
 }
 
 $db = new Database();
@@ -38,10 +44,11 @@ if (count($result['data']) > 0) {
 $params = [
     ':nome' => $nome,
     ':usuario' => $usuario,
-    ':senha' => password_hash($senha, PASSWORD_DEFAULT)
+    ':senha' => password_hash($senha, PASSWORD_DEFAULT),
+    ':tipo' => $lattes
 ];
 
-$sql = "INSERT INTO usuarios (nome, usuario, senha) VALUES (:nome, :usuario, :senha)";
+$sql = "INSERT INTO usuarios (nome, usuario, senha, tipo) VALUES (:nome, :usuario, :senha, :tipo)";
 $db->query($sql, $params);
 
 // Buscar usuário recém-criado para iniciar a sessão
@@ -54,7 +61,8 @@ if ($result['status'] === 'success' && count($result['data']) > 0) {
     $_SESSION['usuario'] = [
         'id' => $user['id'],
         'nome' => $user['nome'],
-        'usuario' => $user['usuario']
+        'usuario' => $user['usuario'],
+        'tipo' => $user['tupo']
     ];
 
     $_SESSION['success'] = 'Cadastro realizado com sucesso!';

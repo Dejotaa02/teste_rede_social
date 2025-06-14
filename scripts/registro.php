@@ -51,7 +51,7 @@ unset($_SESSION['error']);
             </div>
 
             <div class="input-box">
-                <input type="url" id="lattes" placeholder="Currículo Lattes">
+                <input type="url" id="lattes" name="lattes" placeholder="Currículo Lattes">
                  <i class="bx bxs-clipboard"></i>
             </div>
 
