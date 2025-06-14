@@ -49,7 +49,7 @@ $codigo = rand(100000, 999999);
 $_SESSION['codigo_recuperacao'] = $codigo;
 $_SESSION['usuario_recuperacao'] = $usuario;
 
-$apiKey = ''; // Coloque sua chave de API
+$apiKey = 'r'; // Coloque sua chave de API
 
 $headers = [
     'Authorization: Bearer ' . $apiKey,
