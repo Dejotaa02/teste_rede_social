@@ -1,148 +1,155 @@
 * {
-  box-sizing: border-box;
-  margin: 0;
-  padding: 0;
-  font-family: "Roboto", sans-serif;
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+    font-family: "Roboto", sans-serif;
 }
 
 body {
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  min-height: 100vh;
-  background: url("../assets/login-screen-2.jpg");
-  background-size: cover;
-  background-position: center;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 100vh;
+    background: url("../assets/login-screen-2.jpg")  no-repeat center center fixed;
+    background-size: cover;
+   overflow-x: hidden;
 }
 
 .container {
-  width: 420px;
-  background-color: transparent;
-  border: 3px solid rgba(255, 255, 255, 0.3);
-  border-radius: 10px;
-  color: #fff;
-  padding: 30px 40px;
-  box-shadow: rgba(0, 0, 0, 0.25) 0px 54px 55px,
-    rgba(0, 0, 0, 0.12) 0px -12px 30px, rgba(0, 0, 0, 0.12) 0px 4px 6px,
-    rgba(0, 0, 0, 0.17) 0px 12px 13px, rgba(0, 0, 0, 0.09) 0px -3px 5px;
-
-  backdrop-filter: blur(120px);
+    width: 100%;
+    max-width: 420px;
+    min-width: 200px;
+    background-color: transparent;
+    border: 3px solid rgba(255, 255, 255, .3);
+    border-radius: 10px;
+    color: #fff;
+    padding: 30px 20px;
+    box-shadow: rgba(0, 0, 0, 0.25) 0px 54px 55px, rgba(0, 0, 0, 0.12) 0px -12px 30px, rgba(0, 0, 0, 0.12) 0px 4px 6px, rgba(0, 0, 0, 0.17) 0px 12px 13px, rgba(0, 0, 0, 0.09) 0px -3px 5px;
+    backdrop-filter: blur(120px);
 }
 
 .container h1 {
-  font-size: 36px;
-  text-align: center;
+    font-size: 36px;
+    text-align: center;
 }
 
 .input-box {
-  position: relative;
-  width: 100%;
-  margin: 30px 0;
-  height: 50px;
+    position: relative;
+    width: 100%;
+    margin: 30px 0;
+    height: 50px;
 }
 
-.input-box input {
-  width: 100%;
-  height: 100%;
-  border-radius: 40px;
-  /* talvez mudar */
-  background-color: transparent;
-  border: 2px rgb(11, 0, 0) solid;
-  outline: none;
-  font-size: 16px;
-  color: #fff;
+.input-box input, .login-btn {
+   width: 100%;
+    height: 100%;
+    border-radius: 40px;
+    /* talvez mudar */
+    background-color: transparent;
+    border: 2px rgb(11, 0, 0) solid;
+    outline: none;
+    font-size: 16px;
+    color: #fff;
 
-  padding: 20px 45px 20px 20px;
+
+    padding: 20px 45px 20px 20px;
 }
 
 .input-box input::placeholder {
-  color: #fff;
+    color: #fff
 }
 
 .input-box i {
-  right: 20px;
-  font-size: 20px;
-  /* centraliza o ícone */
-  position: absolute;
-  top: 50%;
-  transform: translateY(-50%);
+
+    right: 20px;
+    font-size: 20px;
+    /* centraliza o ícone */
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
 }
 
+
 .link {
-  text-decoration: none;
-  color: #fff;
+    text-decoration: none;
+    color: #fff;
+
 }
 
 .link:hover {
-  text-decoration: underline;
-  color: #fff;
+    text-decoration: underline;
+    color: #fff;
+
 }
 
 .login-btn {
-  width: 100%;
-  height: 50px;
-  background-color: #fff;
-  border-radius: 40px;
-  color: #333;
-  border: none;
-  outline: none;
-  cursor: pointer;
-  font-size: 16px;
-  font-weight: bold;
-  box-shadow: rgba(0, 0, 0, 0.25) 0px 54px 55px,
-    rgba(0, 0, 0, 0.12) 0px -12px 30px, rgba(0, 0, 0, 0.12) 0px 4px 6px,
-    rgba(0, 0, 0, 0.17) 0px 12px 13px, rgba(0, 0, 0, 0.09) 0px -3px 5px;
+    width: 100%;
+    height: 50px;
+    background-color: #fff;
+    border-radius: 40px;
+    text-align: center;
+    color: #333;
+    border: none;
+    outline: none;
+    cursor: pointer;
+    font-size: 16px;
+    font-weight: bold;
+    box-shadow: rgba(0, 0, 0, 0.25) 0px 54px 55px, rgba(0, 0, 0, 0.12) 0px -12px 30px, rgba(0, 0, 0, 0.12) 0px 4px 6px, rgba(0, 0, 0, 0.17) 0px 12px 13px, rgba(0, 0, 0, 0.09) 0px -3px 5px;
 
-  margin-top: 20px;
+    margin-top: 20px;
 }
 
 .login-btn:hover {
-  background-color: transparent;
-  border: 2px solid rgb(11, 0, 0) solid;
-  transition: 0.5s;
+    background-color: transparent;
+    border: 2px solid rgb(11, 0, 0) solid;
+    transition: 0.5s;
 }
 
 .voltar-link {
-  font-size: 14px;
-  text-align: center;
-  margin: 20px 0 15px;
+    font-size: 14px;
+    text-align: center;
+    margin: 20px 0 15px;
 }
 
 .voltar-link a {
-  text-decoration: none;
-  color: #fff;
-  font-weight: bold;
+    text-decoration: none;
+    color: #fff;
+    font-weight: bold;
 }
 
 .voltar-link a:hover {
-  text-decoration: underline;
+    text-decoration: underline;
 }
 
 .modal {
-  display: none;
+  display: none; 
   position: fixed;
-  z-index: 100;
-  left: 0;
   top: 0;
-  width: 100%;
-  height: 100%;
-  background-color: rgba(0, 0, 0, 0.5);
-  box-shadow: rgba(0, 0, 0, 0.25) 0px 54px 55px,
-    rgba(0, 0, 0, 0.12) 0px -12px 30px, rgba(0, 0, 0, 0.12) 0px 4px 6px,
-    rgba(0, 0, 0, 0.17) 0px 12px 13px, rgba(0, 0, 0, 0.09) 0px -3px 5px;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
+  background-color: rgba(0, 0, 0, 0.6);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  z-index: 9999;
 }
 
 .modal-content {
   background-color: white;
-  margin: 15% auto;
-  padding: 20px;
+  padding: 30px 20px;
   border: 1px solid #888;
-  width: 300px;
+  max-width: 420px;
+  width: 90%; 
+  z-index: 10000;
   border-radius: 8px;
   text-align: center;
-   box-shadow: rgba(0, 0, 0, 0.25) 0px 54px 55px,
-    rgba(0, 0, 0, 0.12) 0px -12px 30px, rgba(0, 0, 0, 0.12) 0px 4px 6px,
-    rgba(0, 0, 0, 0.17) 0px 12px 13px, rgba(0, 0, 0, 0.09) 0px -3px 5px;
+  box-shadow: rgba(0, 0, 0, 0.25) 0px 54px 55px,
+    rgba(0, 0, 0, 0.12) 0px -12px 30px,
+    rgba(0, 0, 0, 0.12) 0px 4px 6px,
+    rgba(0, 0, 0, 0.17) 0px 12px 13px,
+    rgba(0, 0, 0, 0.09) 0px -3px 5px;
+  animation: fadeIn 0.3s ease-out;
 }
 
 .close {
@@ -151,3 +158,50 @@ body {
   font-size: 24px;
   cursor: pointer;
 }
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+    transform: scale(0.95); /* opcional: pequeno zoom in */
+  }
+  to {
+    opacity: 1;
+    transform: scale(1);
+  }
+}
+
+
+@media (max-width: 480px) {
+    .container {
+        padding: 25px 15px;
+    }
+
+    .container h1 {
+        font-size: 28px;
+    }
+
+    .input-box {
+        margin: 20px 0;
+        height: 45px;
+    }
+
+    .input-box input {
+        font-size: 14px;
+        padding: 16px 40px 16px 16px;
+    }
+
+    .input-box i {
+        font-size: 18px;
+        right: 16px;
+    }
+
+    .login-btn {
+        height: 45px;
+        font-size: 14px;
+        text-align: center;
+    }
+    .voltar-link {
+        font-size: 12px;
+    }
+}
+
+

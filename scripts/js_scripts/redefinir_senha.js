@@ -24,7 +24,7 @@ forms.addEventListener("submit", async function (e) {
     }, 1000);
   } else {
     console.log(result.mensagem);
-    document.getElementById("modal-sucesso").style.display = "block";
+    document.getElementById("modal-sucesso").style.display = "flex";
     document.getElementById("modal-mensagem").textContent = result.mensagem;
   }
 });
