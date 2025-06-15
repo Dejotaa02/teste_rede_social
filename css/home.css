@@ -268,12 +268,12 @@ h2 {
     transition: background-color 0.3s ease;
 }
 
-.form-comentar button:hover {
+.form-comentar button:hover,  .validateBtn {
     background-color: #218838;
 }
 
 /* --- Classes de Botões Gerais (para outros formulários) --- */
-.btn-excluir, .btn-editar {
+.btn-excluir, .btn-editar, .validateBtn {
     background-color: #4caf50; /* Verde padrão para botões */
     color: white;
     border: none;
@@ -284,6 +284,7 @@ h2 {
     transition: background-color 0.3s ease;
     margin-top: 10px; /* Adicionado para espaçamento */
 }
+
 
 .btn-excluir:hover, .btn-editar:hover {
     background-color: gray;
@@ -310,7 +311,7 @@ h2 {
     .comentario-item form a,
     .likes-section button,
     .btn-comment-action,
-    .btn-excluir-comentario {
+    .btn-excluir-comentario, .validateBtn {
         width: auto; 
         padding: 8px 12px; 
         font-size: 1em;
