@@ -62,7 +62,7 @@ if ($result['status'] === 'success' && count($result['data']) > 0) {
         'id' => $user['id'],
         'nome' => $user['nome'],
         'usuario' => $user['usuario'],
-        'tipo' => $user['tupo']
+        'tipo' => $user['tipo']
     ];
 
     $_SESSION['success'] = 'Cadastro realizado com sucesso!';
