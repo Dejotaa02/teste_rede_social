@@ -35,7 +35,8 @@ if (!password_verify($senha, $user['senha'])) {
 $_SESSION['usuario'] = [
     'id' => $user['id'],
     'nome' => $user['nome'],
-    'usuario' => $user['usuario']
+    'usuario' => $user['usuario'],
+    'tipo' => $user['tipo']
 ];
 
 header('Location: index.php?rota=home');
