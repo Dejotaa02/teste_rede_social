@@ -7,6 +7,8 @@ require_once __DIR__ . '/../inc/menu.php';
 
 $db = new Database();
 $usuario = $_SESSION['usuario'] ?? null;
+$uid = $_SESSION['usuario']['id'] ?? null;
+$tipo = $_SESSION['usuario']['tipo'] ?? null;
 
 $sql = "
     SELECT p.*, u.nome,
@@ -137,9 +139,38 @@ $postagens = $result['status'] === 'success' ? $result['data'] : [];
                             <button type="submit">Comentar</button>
                         </form>
                     <?php endif; ?>
+
+                    <?php if ($tipo == "especialista"): ?>
+                             <button type="submit"  data-post-id="<?= $post['id'] ?>" class="validateBtn form-comentar" data-user-id="<?=  $uid ?>">Validar post</button>
+                    <?php endif; ?>
                 </div>
             <?php endforeach; ?>
         <?php endif; ?>
+    </div>
+    <div id="user-info" data-user-type="<?=$_SESSION['usuario']['tipo'] ?>"></div>
+
+    <div id="modal-validar-post" class="modal" style="display: none;">
+        <div class="modal-content">
+            <span class="close">&times;</span>
+            <h3>Validação de Post</h3>
+            <form id="form-validacao">
+                <input type="hidden" name="post_id" id="post-id-validacao">
+
+            <label for="reino">Reino:</label><br>
+            <input type="text" name="reino" id="reino" required><br><br>
+
+            <label for="familia">Família:</label><br>
+            <input type="text" name="familia" id="familia" required><br><br>
+
+            <label for="especie">Espécie:</label><br>
+            <input type="text" name="especie" id="especie" required><br><br>
+
+            <label for="genero">Gênero:</label><br>
+            <input type="text" name="genero" id="genero" required><br><br>
+
+            <button type="submit">Confirmar Validação</button>
+            </form>
+        </div>
     </div>
     <script>
 // Ocultar mensagem de sucesso
@@ -190,6 +221,7 @@ document.querySelectorAll('.form-comentar').forEach(form => {
     });
 });
 </script>
+<script src="scripts/js_scripts/validar_post.js"></script>
 </body>
 
 </html>
