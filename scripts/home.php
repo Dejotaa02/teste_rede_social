@@ -156,19 +156,19 @@ $postagens = $result['status'] === 'success' ? $result['data'] : [];
             <form id="form-validacao">
                 <input type="hidden" name="post_id" id="post-id-validacao">
 
-            <label for="reino">Reino:</label><br>
-            <input type="text" name="reino" id="reino" required><br><br>
+            <label for="reino" class="validateLabel">Reino:</label><br>
+            <input type="text" name="reino" id="reino" required class="validateInput"><br><br>
 
-            <label for="familia">Família:</label><br>
-            <input type="text" name="familia" id="familia" required><br><br>
+            <label for="familia" class="validateLabel">Família:</label><br>
+            <input type="text" name="familia" id="familia" required class="validateInput"><br><br>
 
-            <label for="genero">Gênero:</label><br>
-            <input type="text" name="genero" id="genero" required><br><br>
+            <label for="genero" class="validateLabel">Gênero:</label><br>
+            <input type="text" name="genero" id="genero" required class="validateInput"><br><br>
 
-            <label for="especie">Espécie:</label><br>
-            <input type="text" name="especie" id="especie" required><br><br>
+            <label for="especie" class="validateLabel">Espécie:</label><br>
+            <input type="text" name="especie" id="especie" required class="validateInput"><br><br>
 
-            <button type="submit">Confirmar Validação</button>
+            <button type="submit" class="confirm-btn">Confirmar Validação</button>
             </form>
         </div>
     </div>
