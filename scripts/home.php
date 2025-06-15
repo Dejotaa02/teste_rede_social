@@ -162,14 +162,21 @@ $postagens = $result['status'] === 'success' ? $result['data'] : [];
             <label for="familia">Família:</label><br>
             <input type="text" name="familia" id="familia" required><br><br>
 
-            <label for="especie">Espécie:</label><br>
-            <input type="text" name="especie" id="especie" required><br><br>
-
             <label for="genero">Gênero:</label><br>
             <input type="text" name="genero" id="genero" required><br><br>
 
+            <label for="especie">Espécie:</label><br>
+            <input type="text" name="especie" id="especie" required><br><br>
+
             <button type="submit">Confirmar Validação</button>
             </form>
+        </div>
+    </div>
+
+    <div id="modal-sucesso" class="modal" style="display: none;">
+        <div class="modal-content">
+            <span class="close" onclick="document.getElementById('modal-sucesso').style.display='none'">&times;</span>
+            <p id="modal-mensagem"></p>
         </div>
     </div>
     <script>

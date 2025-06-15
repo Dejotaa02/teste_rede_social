@@ -22,4 +22,35 @@ document.addEventListener("DOMContentLoaded", function () {
       modal.style.display = "none";
     }
   });
+
+  form.addEventListener('submit', (e) => {
+    e.preventDefault();
+
+    const formData = new FormData(form);
+    formData.append('post_id', postId);
+
+    fetch('posts/validar_post.php', {
+            method: 'POST',
+            body: formData
+        })
+        .then(res => res.json())
+        .then(res => {
+            console.log(res)
+            if (res.sucesso) {
+                document.getElementById("modal-sucesso").style.display = "flex";
+                document.getElementById("modal-mensagem").textContent = res.mensagem;
+                modal.style.display = 'none';
+                form.reset();
+            } else {
+                document.getElementById("modal-sucesso").style.display = "flex";
+                document.getElementById("modal-mensagem").textContent = res.mensagem;
+            }
+        })
+        .catch(err => {
+            console.error(err);
+            alert("Erro na requisição.");
+        });
+
+  })
+
 });

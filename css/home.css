@@ -1,297 +1,299 @@
 /* --- Estilos Globais --- */
 * {
-    margin: 0;
-    padding: 0;
-    box-sizing: border-box;
-    font-family: "Roboto", sans-serif;
-    word-break: break-word;
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: "Roboto", sans-serif;
+  word-break: break-word;
 }
 
 body {
-    background: linear-gradient(135deg, #a8e6cf, #dcedc1, #aed581);
-    background-size: 400% 400%;
-    animation: backgroundShift 15s ease infinite;
-    min-height: 100vh; 
+  background: linear-gradient(135deg, #a8e6cf, #dcedc1, #aed581);
+  background-size: 400% 400%;
+  animation: backgroundShift 15s ease infinite;
+  min-height: 100vh;
 }
 
 @keyframes backgroundShift {
-    0% {
-        background-position: 0% 50%;
-    }
-    50% {
-        background-position: 100% 50%;
-    }
-    100% {
-        background-position: 0% 50%;
-    }
+  0% {
+    background-position: 0% 50%;
+  }
+  50% {
+    background-position: 100% 50%;
+  }
+  100% {
+    background-position: 0% 50%;
+  }
 }
 
 h2 {
-    text-align: center;
-    margin-top: 30px;
-    margin-bottom: 20px;
-    color: #333;
+  text-align: center;
+  margin-top: 30px;
+  margin-bottom: 20px;
+  color: #333;
 }
 
 #msg-sucesso {
-    text-align: center;
-    padding: 10px;
-    margin: 10px auto;
-    background-color: #d4edda;
-    color: #155724;
-    border: 1px solid #c3e6cb;
-    border-radius: 5px;
-    max-width: 50%;
-    opacity: 1;
+  text-align: center;
+  padding: 10px;
+  margin: 10px auto;
+  background-color: #d4edda;
+  color: #155724;
+  border: 1px solid #c3e6cb;
+  border-radius: 5px;
+  max-width: 50%;
+  opacity: 1;
 }
-
 
 .posts_recentes {
-    width: 60%; 
-    margin: 20px auto;
-    border-radius: 8px;
-    padding: 20px;
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-    margin-bottom: 25px; 
-    display: flex;
-    flex-direction: column;
-    align-items: center; 
-    gap: 25px;
+  width: 60%;
+  margin: 20px auto;
+  border-radius: 8px;
+  padding: 20px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  margin-bottom: 25px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 25px;
 }
 
-
 .post {
-    width: 95%;
-    background-color: white;
-    border-radius: 8px;
-    padding: 20px;
-    margin-bottom: 25px; 
-    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  width: 95%;
+  background-color: white;
+  border-radius: 8px;
+  padding: 20px;
+  margin-bottom: 25px;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
 }
 
 .post strong {
-    color: #333;
+  color: #333;
 }
 
 .post p {
-    margin-top: 10px;
-    line-height: 1.6;
-    color: #555;
+  margin-top: 10px;
+  line-height: 1.6;
+  color: #555;
 }
 
 .post hr {
-    border: 0;
-    height: 1px;
-    background-color: #eee;
-    margin: 20px 0;
+  border: 0;
+  height: 1px;
+  background-color: #eee;
+  margin: 20px 0;
 }
-
 
 .post img {
-    max-width: 100%;
-    height: auto;
-    margin: 15px 0; 
-    border-radius: 5px;
-    display: block; 
+  max-width: 100%;
+  height: auto;
+  margin: 15px 0;
+  border-radius: 5px;
+  display: block;
 }
-
 
 .likes-section {
-    display: flex;
-    align-items: center;
-    gap: 10px; 
-    margin-top: 15px;
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  margin-top: 15px;
 }
 
-.likes-section button { 
-    background-color: #007bff; 
-    color: white;
-    border: none;
-    padding: 8px 15px;
-    font-size: 0.9em;
-    cursor: pointer;
-    border-radius: 5px;
-    transition: background-color 0.3s ease;
+.likes-section button {
+  background-color: #007bff;
+  color: white;
+  border: none;
+  padding: 8px 15px;
+  font-size: 0.9em;
+  cursor: pointer;
+  border-radius: 5px;
+  transition: background-color 0.3s ease;
 }
 
 .likes-section button:hover {
-    background-color: #0056b3;
+  background-color: #0056b3;
 }
 
 .contagem-curtidas {
-    font-weight: bold;
-    color: #555;
-    font-size: 0.9em;
+  font-weight: bold;
+  color: #555;
+  font-size: 0.9em;
 }
-
 
 .comentarios {
-    margin-top: 20px;
-    padding-top: 10px;
+  margin-top: 20px;
+  padding-top: 10px;
 }
 
-.comentario-item { 
-    background-color: #fcfcfc;
-    border: 1px solid #eee;
-    border-radius: 6px;
-    padding: 12px;
-    margin-bottom: 10px;
-    position: relative;
+.comentario-item {
+  background-color: #fcfcfc;
+  border: 1px solid #eee;
+  border-radius: 6px;
+  padding: 12px;
+  margin-bottom: 10px;
+  position: relative;
 }
 
 .comentario-item strong {
-    color: #444;
-    font-size: 0.95em;
+  color: #444;
+  font-size: 0.95em;
 }
 
-.comentario-item p { 
-    margin-top: 5px;
-    margin-bottom: 5px;
-    font-size: 0.9em;
-    color: #666;
-    line-height: 1.5;
+.comentario-item p {
+  margin-top: 5px;
+  margin-bottom: 5px;
+  font-size: 0.9em;
+  color: #666;
+  line-height: 1.5;
 }
 
-.comentario-item form { 
-    display: flex;
-    flex-direction: column;
-    gap: 5px;
-    margin-top: 5px;
+.comentario-item form {
+  display: flex;
+  flex-direction: column;
+  gap: 5px;
+  margin-top: 5px;
 }
 
 .comentario-item textarea {
-    width: calc(100% - 20px); 
-    height: 60px; 
-    resize: vertical; 
-    font-size: 0.9em;
-    padding: 8px;
-    border: 1px solid #ccc;
-    border-radius: 4px;
+  width: calc(100% - 20px);
+  height: 60px;
+  resize: vertical;
+  font-size: 0.9em;
+  padding: 8px;
+  border: 1px solid #ccc;
+  border-radius: 4px;
 }
 
 .comentario-item form button {
-    background-color: #28a745; 
-    color: white;
-    border: none;
-    padding: 6px 12px;
-    font-size: 0.85em;
-    border-radius: 4px;
-    cursor: pointer;
-    transition: background-color 0.3s ease;
-    align-self: flex-start; 
+  background-color: #28a745;
+  color: white;
+  border: none;
+  padding: 6px 12px;
+  font-size: 0.85em;
+  border-radius: 4px;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+  align-self: flex-start;
 }
 
 .comentario-item form button:hover {
-    background-color: #218838;
+  background-color: #218838;
 }
 
-.comentario-item form a { 
-    display: inline-block;
-    background-color: #6c757d; 
-    color: white;
-    padding: 6px 12px;
-    font-size: 0.85em;
-    border-radius: 4px;
-    text-decoration: none;
-    transition: background-color 0.3s ease;
-    margin-left: 0; /* Remove o espaçamento lateral extra */
-    border: none; /* Igual ao botão salvar */
-    cursor: pointer; /* Igual ao botão salvar */
-    align-self: flex-start; /* Alinha à esquerda como o botão salvar */
+.comentario-item form a {
+  display: inline-block;
+  background-color: #6c757d;
+  color: white;
+  padding: 6px 12px;
+  font-size: 0.85em;
+  border-radius: 4px;
+  text-decoration: none;
+  transition: background-color 0.3s ease;
+  margin-left: 0; /* Remove o espaçamento lateral extra */
+  border: none; /* Igual ao botão salvar */
+  cursor: pointer; /* Igual ao botão salvar */
+  align-self: flex-start; /* Alinha à esquerda como o botão salvar */
 }
 
 .comentario-item form a:hover {
-    background-color: #5a6268;
+  background-color: #5a6268;
 }
 
 /* --- Botões de Editar/Excluir Comentário --- */
-.btn-comment-action { /* Classe geral para os botões de ação do comentário */
-    background-color: #007bff; /* Azul para editar */
-    color: white;
-    border: none;
-    padding: 6px 12px;
-    font-size: 0.85em; /* Tamanho menor */
-    cursor: pointer;
-    border-radius: 4px;
-    transition: background-color 0.3s ease;
-    margin-left: 5px; /* Espaço entre o texto e o botão */
-    text-decoration: none; /* Se for um link (<a>) */
-    display: inline-block; /* Para garantir que padding funcione bem */
+.btn-comment-action {
+  /* Classe geral para os botões de ação do comentário */
+  background-color: #007bff; /* Azul para editar */
+  color: white;
+  border: none;
+  padding: 6px 12px;
+  font-size: 0.85em; /* Tamanho menor */
+  cursor: pointer;
+  border-radius: 4px;
+  transition: background-color 0.3s ease;
+  margin-left: 5px; /* Espaço entre o texto e o botão */
+  text-decoration: none; /* Se for um link (<a>) */
+  display: inline-block; /* Para garantir que padding funcione bem */
 }
 
 .btn-comment-action:hover {
-    background-color: #0056b3;
+  background-color: #0056b3;
 }
 
-.btn-excluir-comentario { /* Botão de excluir comentário */
-    background-color: #dc3545; /* Vermelho para excluir */
-    color: white;
-    border: none;
-    padding: 5px 10px;
-    font-size: 0.75em;
-    cursor: pointer;
-    border-radius: 4px;
-    transition: background-color 0.3s ease;
-    margin-left: 5px;
+.btn-excluir-comentario {
+  /* Botão de excluir comentário */
+  background-color: #dc3545; /* Vermelho para excluir */
+  color: white;
+  border: none;
+  padding: 5px 10px;
+  font-size: 0.75em;
+  cursor: pointer;
+  border-radius: 4px;
+  transition: background-color 0.3s ease;
+  margin-left: 5px;
 }
 
 .btn-excluir-comentario:hover {
-    background-color: #c82333;
+  background-color: #c82333;
 }
 
 /* --- Formulário para Adicionar Comentário --- */
 .form-comentar {
-    margin-top: 20px;
-    padding-top: 15px;
-    border-top: 1px dashed #eee;
+  margin-top: 20px;
+  padding-top: 15px;
+  border-top: 1px dashed #eee;
 }
 
 .form-comentar textarea {
-    width: 95%; /* Ocupa quase toda a largura do .post */
-    height: 80px; /* Altura padrão para escrever comentário */
-    resize: vertical;
-    font-size: 1em;
-    padding: 10px;
-    border: 1px solid #ccc;
-    border-radius: 5px;
-    margin-bottom: 10px;
+  width: 95%; /* Ocupa quase toda a largura do .post */
+  height: 80px; /* Altura padrão para escrever comentário */
+  resize: vertical;
+  font-size: 1em;
+  padding: 10px;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+  margin-bottom: 10px;
 }
 
-.form-comentar button {
-    background-color: #28a745; /* Verde para comentar */
-    color: white;
-    border: none;
-    padding: 10px 20px;
-    font-size: 1em;
-    cursor: pointer;
-    border-radius: 5px;
-    transition: background-color 0.3s ease;
+.form-comentar button,
+.confirm-btn {
+  background-color: #28a745; /* Verde para comentar */
+  color: white;
+  border: none;
+  padding: 10px 20px;
+  font-size: 1em;
+  cursor: pointer;
+  border-radius: 5px;
+  transition: background-color 0.3s ease;
 }
 
-.form-comentar button:hover,  .validateBtn {
-    background-color: #218838;
+.form-comentar button:hover,
+.validateBtn,
+.confirm-btn {
+  background-color: #218838;
 }
 
 /* --- Classes de Botões Gerais (para outros formulários) --- */
-.btn-excluir, .btn-editar, .validateBtn {
-    background-color: #4caf50; /* Verde padrão para botões */
-    color: white;
-    border: none;
-    padding: 10px 20px;
-    font-size: 16px;
-    cursor: pointer;
-    border-radius: 5px;
-    transition: background-color 0.3s ease;
-    margin-top: 10px; /* Adicionado para espaçamento */
+.btn-excluir,
+.btn-editar,
+.validateBtn {
+  background-color: #4caf50; /* Verde padrão para botões */
+  color: white;
+  border: none;
+  padding: 10px 20px;
+  font-size: 16px;
+  cursor: pointer;
+  border-radius: 5px;
+  transition: background-color 0.3s ease;
+  margin-top: 10px; /* Adicionado para espaçamento */
 }
 
-
-.btn-excluir:hover, .btn-editar:hover {
-    background-color: gray;
+.btn-excluir:hover,
+.btn-editar:hover {
+  background-color: gray;
 }
 
 .modal {
-  display: none; 
+  display: none;
   position: fixed;
   top: 0;
   left: 0;
@@ -309,15 +311,13 @@ h2 {
   padding: 30px 20px;
   border: 1px solid #888;
   max-width: 420px;
-  width: 90%; 
+  width: 90%;
   z-index: 10000;
   border-radius: 8px;
   text-align: center;
   box-shadow: rgba(0, 0, 0, 0.25) 0px 54px 55px,
-    rgba(0, 0, 0, 0.12) 0px -12px 30px,
-    rgba(0, 0, 0, 0.12) 0px 4px 6px,
-    rgba(0, 0, 0, 0.17) 0px 12px 13px,
-    rgba(0, 0, 0, 0.09) 0px -3px 5px;
+    rgba(0, 0, 0, 0.12) 0px -12px 30px, rgba(0, 0, 0, 0.12) 0px 4px 6px,
+    rgba(0, 0, 0, 0.17) 0px 12px 13px, rgba(0, 0, 0, 0.09) 0px -3px 5px;
   animation: fadeIn 0.3s ease-out;
 }
 
@@ -327,6 +327,33 @@ h2 {
   font-size: 24px;
   cursor: pointer;
 }
+
+.validateLabel {
+  display: block;
+  margin-bottom: 6px;
+  font-weight: bold;
+  font-size: 0.95em;
+  color: #333;
+  text-align: left;
+}
+
+.validateInput {
+  width: 100%;
+  padding: 10px 12px;
+  font-size: 0.95em;
+  border: 1px solid #ccc;
+  border-radius: 6px;
+  transition: border-color 0.3s ease, box-shadow 0.3s ease;
+  box-sizing: border-box;
+  margin-bottom: 12px;
+}
+
+.validateInput:focus {
+  border-color: #28a745;
+  box-shadow: 0 0 4px rgba(40, 167, 69, 0.3);
+  outline: none;
+}
+
 @keyframes fadeIn {
   from {
     opacity: 0;
@@ -338,54 +365,62 @@ h2 {
   }
 }
 @media (max-width: 768px) {
-    .posts_recentes {
-        width: 95%;
-        padding: 10px;
-    }
+  .posts_recentes {
+    width: 95%;
+    padding: 10px;
+  }
 
-    .post {
-        width: 100%;
-        padding: 15px;
-    }
+  .post {
+    width: 100%;
+    padding: 15px;
+  }
 
-    .form-comentar textarea,
-    .comentario-item textarea {
-        width: 100%;
-    }
+  .form-comentar textarea,
+  .comentario-item textarea {
+    width: 100%;
+  }
 
-    .form-comentar button,
-    .comentario-item form button,
-    .comentario-item form a,
-    .likes-section button,
-    .btn-comment-action,
-    .btn-excluir-comentario, .validateBtn {
-        width: auto; 
-        padding: 8px 12px; 
-        font-size: 1em;
-    }
+  .form-comentar button,
+  .comentario-item form button,
+  .comentario-item form a,
+  .likes-section button,
+  .btn-comment-action,
+  .btn-excluir-comentario,
+  .validateBtn {
+    width: auto;
+    padding: 8px 12px;
+    font-size: 1em;
+  }
 
-    .likes-section {
-        flex-direction: column;
-        align-items: flex-start;
-        gap: 5px;
-    }
+  .likes-section {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 5px;
+  }
 
-    #msg-sucesso {
-        max-width: 90%;
-        font-size: 0.95em;
-    }
+  #msg-sucesso {
+    max-width: 90%;
+    font-size: 0.95em;
+  }
 
-    h2 {
-        font-size: 1.3em;
-    }
+  h2 {
+    font-size: 1.3em;
+  }
 
-    .post-title {
-        font-size: 1.1em;
-    }
+  .post-title {
+    font-size: 1.1em;
+  }
 
-    .post-content {
-        font-size: 1em;
-    }
+  .post-content {
+    font-size: 1em;
+  }
+
+  .validateInput {
+    font-size: 1em;
+    padding: 10px;
+  }
+
+  .validateLabel {
+    font-size: 1em;
+  }
 }
-
-
